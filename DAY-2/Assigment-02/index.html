@@ -4,214 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eesha Niaz - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
-            color: #333;
+        /* Custom styles for pseudo-elements that Tailwind can't handle */
+        .header-border::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #000;
         }
         
-        header {
-            text-align: center;
-            border-bottom: 2px solid #333;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+        .section-border::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #000;
         }
         
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #2c3e50;
-        }
-        
-        .contact-info {
-            margin-top: 10px;
-            font-size: 1.1em;
-        }
-        
-        h2 {
-            color: #2c3e50;
-            border-bottom: 1px solid #bdc3c7;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        
-        h3 {
-            color: #34495e;
-            margin-bottom: 5px;
-        }
-        
-        .education-item, .project-item {
-            margin-bottom: 20px;
-        }
-        
-        .institution {
+        .custom-bullet::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #000;
             font-weight: bold;
-            color: #2980b9;
-        }
-        
-        .location-date {
-            float: right;
-            font-style: italic;
-            color: #7f8c8d;
-        }
-        
-        ul {
-            padding-left: 20px;
-        }
-        
-        li {
-            margin-bottom: 5px;
-        }
-        
-        .skills-category {
-            margin-bottom: 10px;
-        }
-        
-        .skills-category strong {
-            color: #2c3e50;
-        }
-        
-        .project-links {
-            font-size: 0.9em;
-            color: #3498db;
-        }
-        
-        .clearfix::after {
-            content: "";
-            display: table;
-            clear: both;
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>EESHA NIAZ</h1>
-        <div class="contact-info">
-            Faisalabad | +92 324 7155820 | eshaniaz5@email.com | LinkedIn | GitHub
+<body class="font-inter max-w-[850px] mx-auto py-10 px-8 leading-relaxed text-gray-800 bg-white">
+    <header class="text-center mb-10 pb-8 border-b-[3px] border-black relative header-border">
+        <h1 class="text-5xl font-bold text-black mb-2 tracking-tight">EESHA NIAZ</h1>
+        <div class="text-lg text-gray-600 font-semibold mb-4 uppercase tracking-wide">Frontend Developer</div>
+        <div class="flex justify-center flex-wrap gap-5 text-sm text-gray-700">
+            <div class="flex items-center gap-1">📍 Faisalabad</div>
+            <div class="flex items-center gap-1">📞 +92 324 7155820</div>
+            <div class="flex items-center gap-1">✉️ <a href="mailto:eshaniaz5@email.com" class="text-black font-semibold hover:underline">eshaniaz5@email.com</a></div>
+            <div class="flex items-center gap-1">💼 <a href="#" target="_blank" class="text-black font-semibold hover:underline">LinkedIn</a></div>
+            <div class="flex items-center gap-1">🔗 <a href="#" target="_blank" class="text-black font-semibold hover:underline">GitHub</a></div>
         </div>
     </header>
 
     <main>
-        <section>
-            <h2>EDUCATION</h2>
-            <div class="education-item clearfix">
-                <div class="location-date">Faisalabad Campus<br>2022 – 2026</div>
-                <div class="institution">UNIVERSITY OF AGRICULTURE FAISALABAD</div>
-                <div>BS Software Engineering</div>
-                <div><strong>CGPA:</strong> 3.33/4.0</div>
+        <section class="mb-9">
+            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Professional Summary</h2>
+            <div class="text-base leading-7 text-gray-700 text-justify p-5 bg-gray-50 rounded-lg border-l-4 border-black">
+                Motivated, self-driven <strong class="text-black font-bold">Frontend Developer</strong> with a strong foundation in web development technologies and a passion for building modern, responsive, and user-friendly interfaces. Currently pursuing a <strong class="text-black font-bold">Bachelor's degree in Software Engineering</strong> (6th Semester) with a CGPA of <strong class="text-black font-bold">3.3</strong>. Experienced in independently developing projects for learning and academic purposes, and actively engaged in learning new technologies and problem-solving on <strong class="text-black font-bold">LeetCode</strong>. Enthusiastic about clean code, modern UI design, and collaborative work environments. Seeking a frontend development internship or entry-level position to apply and expand technical skills in a dynamic, growth-focused setting.
             </div>
         </section>
 
-        <section>
-            <h2>PROFESSIONAL SUMMARY</h2>
-            <p>
-                Motivated, self-driven Frontend Developer with a strong foundation in web development technologies and a passion for 
-                building modern, responsive, and user-friendly interfaces. Currently pursuing a Bachelor's degree in Software 
-                Engineering (6th Semester) with a CGPA of 3.3. Experienced in independently developing projects for learning and 
-                academic purposes, and actively engaged in learning new technologies and problem-solving on LeetCode. Enthusiastic 
-                about clean code, modern UI design, and collaborative work environments. Seeking a frontend development internship 
-                or entry-level position to apply and expand technical skills in a dynamic, growth-focused setting.
-            </p>
-        </section>
-
-        <section>
-            <h2>TECHNICAL SKILLS</h2>
-            <div class="skills-category">
-                <strong>Frontend:</strong>
-                <ul>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>JavaScript</li>
-                    <li>TypeScript</li>
-                    <li>Bootstrap</li>
-                    <li>React.js</li>
-                    <li>Next.js</li>
-                </ul>
-            </div>
-            
-            <div class="skills-category">
-                <strong>Backend & Databases:</strong>
-                <ul>
-                    <li>PHP</li>
-                    <li>MySQL</li>
-                    <li>PostgreSQL</li>
-                </ul>
-            </div>
-            
-            <div class="skills-category">
-                <strong>Programming Languages:</strong>
-                <ul>
-                    <li>JavaScript</li>
-                    <li>Python</li>
-                    <li>PHP</li>
-                </ul>
-            </div>
-            
-            <div class="skills-category">
-                <strong>Tools:</strong>
-                <ul>
-                    <li>Git</li>
-                    <li>GitHub</li>
-                </ul>
-            </div>
-            
-            <div class="skills-category">
-                <strong>Others:</strong>
-                <ul>
-                    <li>AI Agents basics</li>
-                    <li>Typing Speed 82 WPM</li>
-                    <li>LeetCode problem-solving</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>PROJECTS</h2>
-            <div class="project-item">
-                <h3>1. Hotel Booking Website</h3>
-                <p><strong>Technologies:</strong> Frontend: HTML, CSS, Bootstrap | Backend: PHP, JS, AJAX | Database: MySQL</p>
-                <div class="project-links">
-                    <strong>GitHub:</strong> <a href="https://github.com/eshaniaz09/FullStackProject-HotelBooking">https://github.com/eshaniaz09/FullStackProject-HotelBooking</a>
-                </div>
-            </div>
-            
-            <div class="project-item">
-                <h3>2. Landing Page (Next.js)</h3>
-                <p>Developed using Next.js and Swiper.js for smooth, modern slider interface</p>
-                <div class="project-links">
-                    <strong>GitHub:</strong> <a href="https://github.com/eshaniaz09/ck">https://github.com/eshaniaz09/ck</a>
-                </div>
-            </div>
-            
-            <div class="project-item">
-                <h3>3. Landing Page (Responsive)</h3>
-                <p>Responsive single-page design using HTML, CSS, and JavaScript</p>
-                <div class="project-links">
-                    <strong>Live:</strong> <a href="https://websitelostmine.netlify.app">https://websitelostmine.netlify.app</a><br>
-                    <strong>GitHub:</strong> <a href="https://github.com/eshaniaz09/landing_page">https://github.com/eshaniaz09/landing_page</a>
+        <section class="mb-9">
+            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Education</h2>
+            <div class="mb-6 p-5 bg-gray-50 rounded-lg border-l-4 border-black">
+                <div class="flex justify-between items-start mb-3 flex-wrap">
+                    <div>
+                        <div class="font-bold text-black text-lg">UNIVERSITY OF AGRICULTURE FAISALABAD</div>
+                        <div class="text-gray-700 font-semibold mt-1">BS Software Engineering</div>
+                        <div class="mt-2 font-bold text-black"><strong>CGPA:</strong> 3.33/4.0</div>
+                    </div>
+                    <div class="text-right text-gray-600 font-medium text-sm">
+                        <div class="italic">Faisalabad Campus</div>
+                        <div class="font-bold text-black">2022 – 2026</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2>CERTIFICATIONS AND LEARNINGS</h2>
-            <ul>
-                <li>Frontend & Backend Development – PIAIC (PRESIDENTIAL INITIATIVE FOR ARTIFICIAL INTELLIGENCE AND COMPUTING)</li>
-                <li>Basics of Agents Language — On-going</li>
-            </ul>
+        <section class="mb-9">
+            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="bg-gray-50 p-5 rounded-lg border-t-[3px] border-black">
+                    <h4 class="font-bold text-black mb-3 text-base">Frontend Technologies</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">HTML5</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">CSS3</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">JavaScript</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">TypeScript</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">React.js</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">Next.js</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">Bootstrap</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-5 rounded-lg border-t-[3px] border-black">
+                    <h4 class="font-bold text-black mb-3 text-base">Backend & Databases</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">PHP</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">MySQL</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-5 rounded-lg border-t-[3px] border-black">
+                    <h4 class="font-bold text-black mb-3 text-base">Programming Languages</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">JavaScript</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">Python</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">PHP</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-5 rounded-lg border-t-[3px] border-black">
+                    <h4 class="font-bold text-black mb-3 text-base">Tools & Others</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">Git</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">GitHub</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">AI Agents</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">82 WPM Typing</span>
+                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">LeetCode</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section>
-            <h2>ADDITIONAL HIGHLIGHTS</h2>
-            <ul>
-                <li>Multiple independent and university projects</li>
-                <li>Passionate about frontend aesthetics and clean responsive design</li>
-                <li>Typing speed: 82 WPM</li>
-                <li>LeetCode practice ongoing</li>
+        <section class="mb-9">
+            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Projects</h2>
+            <div class="mb-6 p-5 bg-gray-50 rounded-lg border-l-4 border-black">
+                <h3 class="text-lg font-bold text-black mb-2">1. Hotel Booking Website</h3>
+                <div class="my-3 text-sm">
+                    <strong class="text-black font-bold">Technologies:</strong> Frontend: HTML, CSS, Bootstrap | Backend: PHP, JS, AJAX | Database: MySQL
+                </div>
+                <p class="mb-3">Full-stack hotel booking system with user authentication, room management, and booking functionality.</p>
+                <div class="mt-3 pt-3 border-t border-gray-300">
+                    <strong class="text-black font-bold">GitHub:</strong> <a href="https://github.com/eshaniaz09/FullStackProject-HotelBooking" target="_blank" class="text-black font-semibold text-sm hover:underline">View Repository</a>
+                </div>
+            </div>
+
+            <div class="mb-6 p-5 bg-gray-50 rounded-lg border-l-4 border-black">
+                <h3 class="text-lg font-bold text-black mb-2">2. Landing Page (Next.js)</h3>
+                <div class="my-3 text-sm">
+                    <strong class="text-black font-bold">Technologies:</strong> Next.js, Swiper.js, CSS
+                </div>
+                <p class="mb-3">Modern, responsive landing page developed using Next.js and Swiper.js for smooth, interactive slider interface.</p>
+                <div class="mt-3 pt-3 border-t border-gray-300">
+                    <strong class="text-black font-bold">GitHub:</strong> <a href="https://github.com/eshaniaz09/ck" target="_blank" class="text-black font-semibold text-sm hover:underline">View Repository</a>
+                </div>
+            </div>
+
+            <div class="mb-6 p-5 bg-gray-50 rounded-lg border-l-4 border-black">
+                <h3 class="text-lg font-bold text-black mb-2">3. Responsive Landing Page</h3>
+                <div class="my-3 text-sm">
+                    <strong class="text-black font-bold">Technologies:</strong> HTML, CSS, JavaScript
+                </div>
+                <p class="mb-3">Fully responsive single-page design with modern UI/UX principles and cross-browser compatibility.</p>
+                <div class="mt-3 pt-3 border-t border-gray-300">
+                    <strong class="text-black font-bold">Live Demo:</strong> <a href="https://websitelostmine.netlify.app" target="_blank" class="text-black font-semibold text-sm hover:underline">View Live</a><br>
+                    <strong class="text-black font-bold">GitHub:</strong> <a href="https://github.com/eshaniaz09/landing_page" target="_blank" class="text-black font-semibold text-sm hover:underline">View Repository</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-9">
+            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Certifications & Learning</h2>
+            <div class="bg-gray-50 py-4 px-5 mb-3 rounded-md border-l-[3px] border-black">
+                <strong class="text-black font-bold">Frontend & Backend Development</strong> – PIAIC (Presidential Initiative for Artificial Intelligence and Computing)
+            </div>
+            <div class="bg-gray-50 py-4 px-5 mb-3 rounded-md border-l-[3px] border-black">
+                <strong class="text-black font-bold">Basics of Agents Language</strong> – On-going
+            </div>
+        </section>
+
+        <section class="mb-9">
+            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Additional Highlights</h2>
+            <ul class="pl-0 list-none">
+                <li class="mb-2 pl-5 relative custom-bullet"><strong class="text-black font-bold">Multiple independent and university projects</strong> demonstrating practical application of skills</li>
+                <li class="mb-2 pl-5 relative custom-bullet"><strong class="text-black font-bold">Passionate about frontend aesthetics</strong> and clean responsive design principles</li>
+                <li class="mb-2 pl-5 relative custom-bullet"><strong class="text-black font-bold">High typing speed:</strong> 82 WPM for efficient development workflow</li>
+                <li class="mb-2 pl-5 relative custom-bullet"><strong class="text-black font-bold">Active LeetCode practice</strong> for continuous algorithm and problem-solving improvement</li>
+                <li class="mb-2 pl-5 relative custom-bullet"><strong class="text-black font-bold">Self-motivated learner</strong> with strong foundation in modern web technologies</li>
             </ul>
         </section>
     </main>
