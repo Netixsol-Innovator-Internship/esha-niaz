@@ -1,0 +1,376 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.4;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            border: 2px solid #333;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .title {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        .contact-info {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 5px;
+        }
+        .section-row {
+            display: contents;
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            padding-top: 5px;
+            text-align: left;
+        }
+        .section-content {
+            font-size: 12px;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+        .section-content:last-child {
+            margin-bottom: 0;
+        }
+        .section-separator {
+            grid-column: 1 / -1;
+            height: 2px;
+            background-color: #000;
+            margin: 4px 0;
+        }
+        .profiles {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .profile-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .link-of-item{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .name-of-link{
+            margin-left: 1rem;
+        }
+        .profile-item a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .profile-icon {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+        .profile-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+        .job-title {
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .job-dates {
+            font-size: 12px;
+            color: #000;
+            text-align: right;
+        }
+        .company {
+            color: #333;
+            font-size: 12px;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
+        .company a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .job-description {
+            margin-left: 0;
+            margin-bottom: 15px;
+            margin-top: 5px;
+        }
+        .job-description ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .job-description li {
+            margin-bottom: 3px;
+        }
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .university {
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .degree {
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+        .education-dates {
+            font-size: 12px;
+            color: #000;
+            text-align: right;
+            font-weight: bold;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .project {
+            font-size: 12px;
+        }
+        .project-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .project-role {
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        .skill-category {
+            font-size: 12px;
+        }
+        .skill-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .certification {
+            font-size: 12px;
+        }
+        .cert-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .cert-org {
+            color: #666;
+            margin-bottom: 3px;
+        }
+        .cert-year {
+            font-weight: bold;
+        }
+        .languages-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .language {
+            font-size: 12px;
+        }
+        .lang-name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .lang-level {
+            color: #666;
+        }
+        .summary-text {
+            text-align: justify;
+        }
+        .strong {
+            font-weight: bold;
+        }
+        .references-text {
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .resume-container {
+                padding: 20px 15px;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .section-title {
+                font-size: 16px;
+                font-weight: bold;
+                margin-bottom: 8px;
+                padding-top: 0;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 5px;
+            }
+            
+            .section-content {
+                margin-bottom: 15px;
+            }
+            
+            .section-separator {
+                display: none;
+            }
+            
+            .name {
+                font-size: 22px;
+            }
+            
+            .title {
+                font-size: 16px;
+            }
+            
+            .contact-info {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            .profiles {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .profile-item {
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .name-of-link {
+                margin-left: 0;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .job-dates {
+                text-align: left;
+            }
+            
+            .education-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .education-dates {
+                text-align: left;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .certifications-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .languages-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .resume-container {
+                padding: 15px 10px;
+                border-width: 1px;
+            }
+            
+            .name {
+                font-size: 20px;
+            }
+            
+            .title {
+                font-size: 14px;
+            }
+            
+            .contact-info {
+                font-size: 12px;
+            }
+            
+            .section-title {
+                font-size: 14px;
+            }
+            
+            .section-content {
+                font-size: 11px;
+            }
+            
+            .job-description ul {
+                margin-left: 15px;
+            }
+            
+            .profile-icon {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            .resume-container {
+                padding: 50px 40px;
+            }
+        }
