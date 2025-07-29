@@ -3,194 +3,587 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eesha Niaz - Resume</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'inter': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <title>John Doe - Resume</title>
     <style>
-        /* Custom styles for pseudo-elements that Tailwind can't handle */
-        .header-border::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: #000;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        .section-border::before {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 40px;
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.4;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            border: 2px solid #333;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .title {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        .contact-info {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 5px;
+        }
+        .section-row {
+            display: contents;
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            padding-top: 5px;
+            text-align: left;
+        }
+        .section-content {
+            font-size: 12px;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+        .section-content:last-child {
+            margin-bottom: 0;
+        }
+        .section-separator {
+            grid-column: 1 / -1;
             height: 2px;
-            background: #000;
+            background-color: #000;
+            margin: 4px 0;
         }
-        
-        .custom-bullet::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
+        .profiles {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .profile-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .link-of-item{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .name-of-link{
+            margin-left: 1rem;
+        }
+        .profile-item a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .profile-icon {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+        .profile-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+        .job-title {
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .job-dates {
+            font-size: 12px;
+            color: #000;
+            text-align: right;
+        }
+        .company {
+            color: #333;
+            font-size: 12px;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
+        .company a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .job-description {
+            margin-left: 0;
+            margin-bottom: 15px;
+            margin-top: 5px;
+        }
+        .job-description ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .job-description li {
+            margin-bottom: 3px;
+        }
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .university {
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .degree {
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+        .education-dates {
+            font-size: 12px;
+            color: #000;
+            text-align: right;
+            font-weight: bold;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .project {
+            font-size: 12px;
+        }
+        .project-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .project-role {
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+        .skill-category {
+            font-size: 12px;
+        }
+        .skill-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .certification {
+            font-size: 12px;
+        }
+        .cert-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .cert-org {
+            color: #666;
+            margin-bottom: 3px;
+        }
+        .cert-year {
+            font-weight: bold;
+        }
+        .languages-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .language {
+            font-size: 12px;
+        }
+        .lang-name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .lang-level {
+            color: #666;
+        }
+        .summary-text {
+            text-align: justify;
+        }
+        .strong {
+            font-weight: bold;
+        }
+        .references-text {
             color: #000;
             font-weight: bold;
         }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .resume-container {
+                padding: 20px 15px;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .section-title {
+                font-size: 16px;
+                font-weight: bold;
+                margin-bottom: 8px;
+                padding-top: 0;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 5px;
+            }
+            
+            .section-content {
+                margin-bottom: 15px;
+            }
+            
+            .section-separator {
+                display: none;
+            }
+            
+            .name {
+                font-size: 22px;
+            }
+            
+            .title {
+                font-size: 16px;
+            }
+            
+            .contact-info {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            .profiles {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .profile-item {
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .name-of-link {
+                margin-left: 0;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .job-dates {
+                text-align: left;
+            }
+            
+            .education-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .education-dates {
+                text-align: left;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .certifications-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .languages-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .resume-container {
+                padding: 15px 10px;
+                border-width: 1px;
+            }
+            
+            .name {
+                font-size: 20px;
+            }
+            
+            .title {
+                font-size: 14px;
+            }
+            
+            .contact-info {
+                font-size: 12px;
+            }
+            
+            .section-title {
+                font-size: 14px;
+            }
+            
+            .section-content {
+                font-size: 11px;
+            }
+            
+            .job-description ul {
+                margin-left: 15px;
+            }
+            
+            .profile-icon {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            .resume-container {
+                padding: 50px 40px;
+            }
+        }
     </style>
 </head>
-<body class="font-inter max-w-[850px] mx-auto py-10 px-8 leading-relaxed text-gray-800 bg-white">
-    <header class="text-center mb-10 pb-8 border-b-[3px] border-black relative header-border">
-        <h1 class="text-5xl font-bold text-black mb-2 tracking-tight">EESHA NIAZ</h1>
-        <div class="text-lg text-gray-600 font-semibold mb-4 uppercase tracking-wide">Frontend Developer</div>
-        <div class="flex justify-center flex-wrap gap-5 text-sm text-gray-700">
-            <div class="flex items-center gap-1">📍 Faisalabad</div>
-            <div class="flex items-center gap-1">📞 +92 324 7155820</div>
-            <div class="flex items-center gap-1">✉️ <a href="mailto:eshaniaz5@email.com" class="text-black font-semibold hover:underline">eshaniaz5@email.com</a></div>
-            <div class="flex items-center gap-1">💼 <a href="#" target="_blank" class="text-black font-semibold hover:underline">LinkedIn</a></div>
-            <div class="flex items-center gap-1">🔗 <a href="#" target="_blank" class="text-black font-semibold hover:underline">GitHub</a></div>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <div class="name">John Doe</div>
+            <div class="title">Creative and Innovative Web Developer</div>
+            <div class="contact-info">
+                📍 Pleasanton, CA 94588    📞 (555) 123-4567    ✉️ john.doe@gmail.com    🌐 https://johndoe.net/
+            </div>
         </div>
-    </header>
-
-    <main>
-        <section class="mb-9">
-            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Professional Summary</h2>
-            <div class="text-base leading-7 text-gray-700 text-justify p-5 bg-gray-50 rounded-lg border-l-4 border-black">
-                Motivated, self-driven <strong class="text-black font-bold">Frontend Developer</strong> with a strong foundation in web development technologies and a passion for building modern, responsive, and user-friendly interfaces. Currently pursuing a <strong class="text-black font-bold">Bachelor's degree in Software Engineering</strong> (6th Semester) with a CGPA of <strong class="text-black font-bold">3.3</strong>. Experienced in independently developing projects for learning and academic purposes, and actively engaged in learning new technologies and problem-solving on <strong class="text-black font-bold">LeetCode</strong>. Enthusiastic about clean code, modern UI design, and collaborative work environments. Seeking a frontend development internship or entry-level position to apply and expand technical skills in a dynamic, growth-focused setting.
-            </div>
-        </section>
-
-        <section class="mb-9">
-            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Education</h2>
-            <div class="mb-6 p-5 bg-gray-50 rounded-lg border-l-4 border-black">
-                <div class="flex justify-between items-start mb-3 flex-wrap">
-                    <div>
-                        <div class="font-bold text-black text-lg">UNIVERSITY OF AGRICULTURE FAISALABAD</div>
-                        <div class="text-gray-700 font-semibold mt-1">BS Software Engineering</div>
-                        <div class="mt-2 font-bold text-black"><strong>CGPA:</strong> 3.33/4.0</div>
-                    </div>
-                    <div class="text-right text-gray-600 font-medium text-sm">
-                        <div class="italic">Faisalabad Campus</div>
-                        <div class="font-bold text-black">2022 – 2026</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="mb-9">
-            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Technical Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class="bg-gray-50 p-5 rounded-lg border-t-[3px] border-black">
-                    <h4 class="font-bold text-black mb-3 text-base">Frontend Technologies</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">HTML5</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">CSS3</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">JavaScript</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">TypeScript</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">React.js</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">Next.js</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">Bootstrap</span>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 p-5 rounded-lg border-t-[3px] border-black">
-                    <h4 class="font-bold text-black mb-3 text-base">Backend & Databases</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">PHP</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">MySQL</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">PostgreSQL</span>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 p-5 rounded-lg border-t-[3px] border-black">
-                    <h4 class="font-bold text-black mb-3 text-base">Programming Languages</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">JavaScript</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">Python</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">PHP</span>
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 p-5 rounded-lg border-t-[3px] border-black">
-                    <h4 class="font-bold text-black mb-3 text-base">Tools & Others</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">Git</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">GitHub</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">AI Agents</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">82 WPM Typing</span>
-                        <span class="bg-gray-300 text-black py-1 px-3 rounded-full text-sm font-semibold border border-gray-400">LeetCode</span>
+        <div class="main-content">
+            <!-- Profiles Section -->
+            <div class="section-row">
+                <div class="section-title">Profiles</div>
+                <div class="section-content">
+                    <div class="profiles">
+                        <div class="profile-item">
+                            <div class="link-of-item">
+                                <span class="profile-icon">
+                                    <svg viewBox="0 0 24 24" fill="#0077b5">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                </span>
+                                <a href="#">johndoe</a>
+                            </div>
+                            <span class="name-of-link">LinkedIn</span>
+                        </div>
+                        <div class="profile-item">
+                            <div class="link-of-item">
+                                <span class="profile-icon">
+                                    <svg viewBox="0 0 24 24" fill="#333">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </span>
+                                <a href="#">johndoe</a>
+                            </div>
+                            <span class="name-of-link">GitHub</span>
+                        </div>
+                        <div class="profile-item">
+                            <div class="link-of-item">
+                                <span class="profile-icon">
+                                    <svg viewBox="0 0 24 24" fill="#f48024">
+                                        <path d="M15.725 0l-1.72 1.277-6.39 4.883 2.708 2.708L17.996 3.5l.001 17.002L2.549 12.02l2.708-2.708L-.001 4.429v15.081l16.275 4.49z"/>
+                                        <path d="M17.996 3.5L10.323 8.868l2.708 2.708 7.673-5.368-.708-.708z"/>
+                                    </svg>
+                                </span>
+                                <a href="#">johndoe</a>
+                            </div>
+                            <span class="name-of-link">StackOverflow</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="mb-9">
-            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Projects</h2>
-            <div class="mb-6 p-5 bg-gray-50 rounded-lg border-l-4 border-black">
-                <h3 class="text-lg font-bold text-black mb-2">1. Hotel Booking Website</h3>
-                <div class="my-3 text-sm">
-                    <strong class="text-black font-bold">Technologies:</strong> Frontend: HTML, CSS, Bootstrap | Backend: PHP, JS, AJAX | Database: MySQL
-                </div>
-                <p class="mb-3">Full-stack hotel booking system with user authentication, room management, and booking functionality.</p>
-                <div class="mt-3 pt-3 border-t border-gray-300">
-                    <strong class="text-black font-bold">GitHub:</strong> <a href="https://github.com/eshaniaz09/FullStackProject-HotelBooking" target="_blank" class="text-black font-semibold text-sm hover:underline">View Repository</a>
+            <div class="section-separator"></div>
+            <!-- Summary Section -->
+            <div class="section-row">
+                <div class="section-title">Summary</div>
+                <div class="section-content">
+                    <div class="summary-text">
+                        Innovative Web Developer with 5 years of experience in building impactful and user-friendly websites and applications. Specializes in <span class="strong">front-end technologies</span> and passionate about modern web standards and cutting-edge development techniques. Proven track record of leading successful projects from concept to deployment.
+                    </div>
                 </div>
             </div>
-
-            <div class="mb-6 p-5 bg-gray-50 rounded-lg border-l-4 border-black">
-                <h3 class="text-lg font-bold text-black mb-2">2. Landing Page (Next.js)</h3>
-                <div class="my-3 text-sm">
-                    <strong class="text-black font-bold">Technologies:</strong> Next.js, Swiper.js, CSS
-                </div>
-                <p class="mb-3">Modern, responsive landing page developed using Next.js and Swiper.js for smooth, interactive slider interface.</p>
-                <div class="mt-3 pt-3 border-t border-gray-300">
-                    <strong class="text-black font-bold">GitHub:</strong> <a href="https://github.com/eshaniaz09/ck" target="_blank" class="text-black font-semibold text-sm hover:underline">View Repository</a>
+            <div class="section-separator"></div>
+            <!-- Experience Section -->
+            <div class="section-row">
+                <div class="section-title">Experience</div>
+                <div class="section-content">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Creative Solutions Inc.</div>
+                            <div class="company">Senior Web Developer</div>
+                            <div class="company">🌐 <a href="#">https://creativesolutions.inc/</a></div>
+                        </div>
+                        <div class="job-dates"><span class="strong">January 2019 to Present</span><br>San Francisco, CA</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Spearheaded the redesign of the main product website, resulting in a 40% increase in user engagement.</li>
+                            <li>Developed and implemented a new responsive framework, improving cross-device compatibility.</li>
+                            <li>Mentored a team of four junior developers, fostering an environment of technical excellence.</li>
+                        </ul>
+                    </div>
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">TechAdvancers</div>
+                            <div class="company">Web Developer</div>
+                            <div class="company">🌐 <a href="#">https://techadvancers.com/</a></div>
+                        </div>
+                        <div class="job-dates"><span class="strong">June 2016 to December 2018</span><br>San Jose, CA</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Collaborated in a team of 10 to develop high-quality web applications using ReactJS and NodeJS.</li>
+                            <li>Managed the integration of third-party services such as Stripe for payments and Twilio for SMS services.</li>
+                            <li>Optimized application performance, achieving a 30% reduction in load times.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
-            <div class="mb-6 p-5 bg-gray-50 rounded-lg border-l-4 border-black">
-                <h3 class="text-lg font-bold text-black mb-2">3. Responsive Landing Page</h3>
-                <div class="my-3 text-sm">
-                    <strong class="text-black font-bold">Technologies:</strong> HTML, CSS, JavaScript
+            <div class="section-separator"></div>
+            <!-- Education Section -->
+            <div class="section-row">
+                <div class="section-title">Education</div>
+                <div class="section-content">
+                    <div class="education-header">
+                        <div>
+                            <div class="university">University of California</div>
+                            <div class="degree">Berkeley, CA</div>
+                        </div>
+                        <div class="education-dates"><span class="strong">August 2012 to May 2016</span><br><span class="strong">Bachelor's in Computer Science</span></div>
+                    </div>
                 </div>
-                <p class="mb-3">Fully responsive single-page design with modern UI/UX principles and cross-browser compatibility.</p>
-                <div class="mt-3 pt-3 border-t border-gray-300">
-                    <strong class="text-black font-bold">Live Demo:</strong> <a href="https://websitelostmine.netlify.app" target="_blank" class="text-black font-semibold text-sm hover:underline">View Live</a><br>
-                    <strong class="text-black font-bold">GitHub:</strong> <a href="https://github.com/eshaniaz09/landing_page" target="_blank" class="text-black font-semibold text-sm hover:underline">View Repository</a>
+            </div>
+            <div class="section-separator"></div>
+            <!-- Projects Section -->
+            <div class="section-row">
+                <div class="section-title">Projects</div>
+                <div class="section-content">
+                    <div class="projects-grid">
+                        <div class="project">
+                            <div class="project-title">E-Commerce Platform</div>
+                            <div class="project-role">Project Lead</div>
+                            <div>Led the development of a full-scale e-commerce platform, improving sales conversion by 25%.</div>
+                        </div>
+                        <div class="project">
+                            <div class="project-title">Interactive Dashboard</div>
+                            <div class="project-role">Frontend Developer</div>
+                            <div>Created an interactive analytics dashboard for a SaaS application, enhancing data visualization for clients.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <section class="mb-9">
-            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Certifications & Learning</h2>
-            <div class="bg-gray-50 py-4 px-5 mb-3 rounded-md border-l-[3px] border-black">
-                <strong class="text-black font-bold">Frontend & Backend Development</strong> – PIAIC (Presidential Initiative for Artificial Intelligence and Computing)
+            <div class="section-separator"></div>
+            <!-- Skills Section -->
+            <div class="section-row">
+                <div class="section-title">Skills</div>
+                <div class="section-content">
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <div class="skill-title">Web Technologies</div>
+                            <div class="strong">Advanced</div>
+                            <div>HTML5, JavaScript, PHP, Python</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-title">Web Frameworks</div>
+                            <div class="strong">Intermediate</div>
+                            <div>ReactJS, Angular, VueJS, Laravel, Django</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-title">Tools</div>
+                            <div class="strong">Intermediate</div>
+                            <div>Webpack, Git, Jenkins, Docker, JIRA</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="bg-gray-50 py-4 px-5 mb-3 rounded-md border-l-[3px] border-black">
-                <strong class="text-black font-bold">Basics of Agents Language</strong> – On-going
+            <div class="section-separator"></div>
+            <!-- Certifications Section -->
+            <div class="section-row">
+                <div class="section-title">Certifications</div>
+                <div class="section-content">
+                    <div class="certifications-grid">
+                        <div class="certification">
+                            <div class="cert-title">Full-Stack Web Development</div>
+                            <div class="cert-org">CodeAcademy</div>
+                            <div class="cert-year">2020</div>
+                        </div>
+                        <div class="certification">
+                            <div class="cert-title">AWS Certified Developer</div>
+                            <div class="cert-org">Amazon Web Services</div>
+                            <div class="cert-year">2019</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-
-        <section class="mb-9">
-            <h2 class="text-xl font-bold text-black uppercase tracking-wide mb-5 pb-2 border-b-2 border-gray-300 relative section-border">Additional Highlights</h2>
-            <ul class="pl-0 list-none">
-                <li class="mb-2 pl-5 relative custom-bullet"><strong class="text-black font-bold">Multiple independent and university projects</strong> demonstrating practical application of skills</li>
-                <li class="mb-2 pl-5 relative custom-bullet"><strong class="text-black font-bold">Passionate about frontend aesthetics</strong> and clean responsive design principles</li>
-                <li class="mb-2 pl-5 relative custom-bullet"><strong class="text-black font-bold">High typing speed:</strong> 82 WPM for efficient development workflow</li>
-                <li class="mb-2 pl-5 relative custom-bullet"><strong class="text-black font-bold">Active LeetCode practice</strong> for continuous algorithm and problem-solving improvement</li>
-                <li class="mb-2 pl-5 relative custom-bullet"><strong class="text-black font-bold">Self-motivated learner</strong> with strong foundation in modern web technologies</li>
-            </ul>
-        </section>
-    </main>
+            <div class="section-separator"></div>
+            <!-- Languages Section -->
+            <div class="section-row">
+                <div class="section-title">Languages</div>
+                <div class="section-content">
+                    <div class="languages-grid">
+                        <div class="language">
+                            <div class="lang-name">English</div>
+                            <div class="lang-level">Native Speaker</div>
+                        </div>
+                        <div class="language">
+                            <div class="lang-name">Spanish</div>
+                            <div class="lang-level">Intermediate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-separator"></div>
+            <!-- References Section -->
+            <div class="section-row">
+                <div class="section-title">References</div>
+                <div class="section-content">
+                    <span class="references-text">Available upon request</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
