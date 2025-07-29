@@ -1,0 +1,221 @@
+        :root {
+            /* Primary Colors */
+            --purple-50: hsl(260, 100%, 95%);
+            --purple-300: hsl(264, 82%, 80%);
+            --purple-500: hsl(263, 55%, 52%);
+            
+            /* Neutral Colors */
+            --white: hsl(0, 0%, 100%);
+            --grey-100: hsl(214, 17%, 92%);
+            --grey-200: hsl(0, 0%, 81%);
+            --grey-400: hsl(224, 10%, 45%);
+            --grey-500: hsl(217, 19%, 35%);
+            --dark-blue: hsl(219, 29%, 14%);
+            --black: hsl(0, 0%, 7%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Barlow Semi Condensed', sans-serif;
+            font-size: 13px;
+            background-color: var(--grey-100);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 24px;
+            max-width: 1110px;
+            width: 100%;
+        }
+
+        .testimonial-card {
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .testimonial-card.daniel {
+            background-color: var(--purple-500);
+            grid-column: 1 / 3;
+            background-image: url("images/bg-pattern-quotation.svg");
+            background-repeat: no-repeat;
+            background-position: top right 3rem;
+            color: var(--white);
+        }
+
+        .testimonial-card.jonathan {
+            background-color: var(--grey-500);
+            grid-column: 3 / 4;
+            color: var(--white);
+        }
+
+        .testimonial-card.kira {
+            background-color: var(--white);
+            grid-column: 4 / 5;
+            grid-row: 1 / 3;
+            color: var(--grey-500);
+        }
+
+        .testimonial-card.jeanette {
+            background-color: var(--white);
+            grid-column: 1 / 2;
+            color: var(--grey-500);
+        }
+
+        .testimonial-card.patrick {
+            background-color: var(--dark-blue);
+            grid-column: 2 / 4;
+            color: var(--white);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .profile-image {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            margin-right: 17px;
+        }
+
+        .daniel .profile-image,
+        .patrick .profile-image {
+            border: 2px solid var(--purple-300);
+        }
+
+        .profile-info h3 {
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .profile-info p {
+            font-size: 11px;
+            font-weight: 500;
+            opacity: 0.5;
+        }
+
+        .testimonial-title {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.4;
+            opacity: 0.7;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 71px 24px;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 24px;
+                max-width: 327px;
+                width: 100%;
+            }
+
+            /* Mobile order: Daniel, Jonathan, Jeanette, Patrick, Kira */
+            .testimonial-card.daniel {
+                grid-column: 1;
+                grid-row: 1;
+                order: 1;
+                background-position: top 0 right 24px;
+            }
+
+            .testimonial-card.jonathan {
+                grid-column: 1;
+                grid-row: 2;
+                order: 2;
+            }
+
+            .testimonial-card.jeanette {
+                grid-column: 1;
+                grid-row: 3;
+                order: 3;
+            }
+
+            .testimonial-card.patrick {
+                grid-column: 1;
+                grid-row: 4;
+                order: 4;
+            }
+
+            .testimonial-card.kira {
+                grid-column: 1;
+                grid-row: 5;
+                order: 5;
+            }
+
+            .testimonial-card {
+                padding: 26px 32px 32px 32px;
+                width: 100%;
+            }
+
+            .testimonial-title {
+                font-size: 20px;
+                line-height: 1.2;
+                margin-bottom: 16px;
+            }
+
+            .testimonial-text {
+                font-size: 13px;
+                line-height: 1.4;
+            }
+        }
+
+        /* Tablet responsive */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 900px;
+            }
+
+            .testimonial-card.daniel {
+                grid-column: 1 / 3;
+            }
+
+            .testimonial-card.jonathan {
+                grid-column: 3 / 4;
+                grid-row: 1;
+            }
+
+            .testimonial-card.kira {
+                grid-column: 3 / 4;
+                grid-row: 2 / 4;
+            }
+
+            .testimonial-card.jeanette {
+                grid-column: 1 / 2;
+                grid-row: 2;
+            }
+
+            .testimonial-card.patrick {
+                grid-column: 2 / 3;
+                grid-row: 2;
+            }
+        }
