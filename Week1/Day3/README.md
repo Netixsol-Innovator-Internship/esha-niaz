@@ -13,8 +13,7 @@ This project is a **responsive landing page** designed using **HTML** and **Tail
 
 | Navigation Item | Target Page           | Description                            |
 |-----------------|-----------------------|----------------------------------------|
-| **Logo**        | `index.html`          | Redirects to the main landing page     |
-| **Gallery**     | `page.html`           | Opens the part of main landing page    |
+| **Gallery**     | `index.html`           | Opens the part of main landing page    |
 | **Destinations**| `page_2.html`         | Opens the dedicated destinations page  |
 | **Members**     | `page_3.html`         | Opens the About Us (team members) page |
 
