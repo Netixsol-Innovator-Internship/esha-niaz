@@ -1,0 +1,276 @@
+
+        /* Navigation hover effects */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, #ffffff, #cccccc);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Bottom cards hover effects */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Mobile menu items hover */
+        .mobile-menu-item {
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-item:hover {
+            transform: translateX(10px);
+            color: #f0f0f0;
+        }
+        
+        /* Ensure animations don't break responsiveness */
+        @media (max-width: 768px) {
+            .nav-link:hover {
+                transform: none;
+            }
+            
+            .card-hover:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .card-hover:hover {
+                transform: translateY(-2px);
+                scale: 1;
+            }
+        }
+        /* Logos sliding animation */
+        .logos-slider {
+            width: 100%;
+            position: relative;
+            /* Add extra padding to prevent cutting */
+            padding: 20px 0;
+        }
+        .logos-track {
+            animation: slide 20s linear infinite;
+            width: fit-content;
+        }
+        .logos-slider:hover .logos-track {
+            animation-play-state: paused;
+        }
+        .logo-item {
+            transition: all 0.3s ease;
+            /* Add extra space around logos to prevent cutting */
+            padding: 10px;
+            margin: 0 5px;
+        }
+        .logo-item img {
+            transition: all 0.3s ease;
+            filter: blur(0px);
+        }
+        /* When any logo is hovered, blur all others */
+        .logos-track:hover .logo-item:not(:hover) img {
+            filter: blur(3px);
+            opacity: 0.4;
+        }
+        /* Scale the hovered logo */
+        .logo-item:hover {
+            transform: scale(1.2);
+            z-index: 10;
+            position: relative;
+        }
+        .logo-item:hover img {
+            filter: blur(0px);
+            opacity: 1;
+        }
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        /* Responsive adjustments for logos */
+        @media (max-width: 768px) {
+            .logos-track {
+                animation-duration: 15s;
+            }
+            
+            .logo-item:hover {
+                transform: scale(1.15);
+            }
+            .logos-track:hover .logo-item:not(:hover) img {
+                filter: blur(2px);
+                opacity: 0.5;
+            }
+        }
+        @media (max-width: 480px) {
+            .logos-track {
+                animation-duration: 12s;
+            }
+            
+            .logo-item:hover {
+                transform: scale(1.1);
+            }
+            .logos-track:hover .logo-item:not(:hover) img {
+                filter: blur(1px);
+                opacity: 0.6;
+            }
+            .logos-slider {
+                padding: 15px 0;
+            }
+            .logo-item {
+                padding: 8px;
+                margin: 0 3px;
+            }
+        }
+        /* Ensure smooth animation on all devices */
+        @media (prefers-reduced-motion: reduce) {
+            .logos-track {
+                animation: none;
+            }
+        }
+        
+        /* Desert section styles */
+        .desert-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .desert-gradient-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            z-index: 1;
+        }
+        
+        .desert-gradient-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            z-index: 1;
+        }
+        
+        .desert-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .desert-title {
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .desert-subtitle {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .desert-description {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+        
+        .guide-profile {
+            display: flex;
+            align-items: center;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+            border-radius: 9999px;
+            padding: 4px;
+            padding-right: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .guide-profile img {
+            border: 2px solid white;
+        }
+        /* New Explore Section Styles */
+        .explore-section {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        
+        .explore-nav-button {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .explore-nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .explore-title {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: -0.02em;
+        }
+        
+        /* Footer Styles */
+        .footer-link {
+            transition: all 0.3s ease;
+            color: #d1d5db;
+        }
+        
+        .footer-link:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+        
+        .footer-section-title {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive adjustments for explore section */
+        @media (max-width: 768px) {
+            .explore-nav-button:hover {
+                transform: scale(1.02);
+            }
+            
+            .footer-link:hover {
+                transform: translateX(2px);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .explore-nav-button:hover {
+                transform: none;
+            }
+            
+            .footer-link:hover {
+                transform: none;
+            }
+        }
