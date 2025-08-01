@@ -1,0 +1,113 @@
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        maxWidth: {
+          1770: "1770px",
+        },
+        colors: {
+          "custom-bg": "rgba(218, 143, 77, 0.09)",
+          "brown-bg": "rgba(101, 67, 33, 0.8)",
+        },
+      },
+    },
+  };
+</script>
+
+<!-- About us -->
+<div class="bg-black min-h-screen">
+  <div class="w-full max-w-1770 mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- About Us Heading - Stays on Black Background -->
+    <div class="py-12 lg:py-20">
+      <h1
+        class="text-white text-3xl sm:text-4xl lg:text-5xl font-bold text-center"
+      >
+        About Us
+      </h1>
+    </div>
+
+    <!-- Main Content Section - Brown Background -->
+    <div
+      class="bg-[#DA8F4D17] rounded-lg px-6 sm:px-8 lg:px-12 py-12 lg:py-16 mb-12"
+    >
+      <!-- Main Content Grid -->
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-24 items-start"
+      >
+        <!-- Left Side - Image Grid -->
+        <div class="grid grid-cols-2 gap-4 lg:gap-6">
+          <!-- Top Left Image -->
+          <div
+            class="relative bg-[rgba(197,195,192,0.09)] rounded-lg overflow-hidden aspect-square"
+          >
+            <img
+              src="images/about_pic.png"
+              alt="Tiger Portrait 1"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <!-- Top Right Image -->
+          <div
+            class="relative bg-[rgba(197,195,192,0.09)] rounded-lg overflow-hidden aspect-square"
+          >
+            <img
+              src="images/about_pic2.png"
+              alt="Tiger Portrait 2"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <!-- Bottom Left Image -->
+          <div
+            class="relative bg-[rgba(197,195,192,0.09)] rounded-lg overflow-hidden aspect-square"
+          >
+            <img
+              src="images/about_pic3.png"
+              alt="Tiger Portrait 3"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <!-- Bottom Right Image -->
+          <div
+            class="relative bg-[rgba(197,195,192,0.09)] rounded-lg overflow-hidden aspect-square"
+          >
+            <img
+              src="images/about_pic4.png"
+              alt="Tiger Portrait 4"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        <!-- Right Side - Text Content -->
+        <div class="flex flex-col justify-start space-y-6 lg:space-y-8">
+          <!-- First Paragraph -->
+          <p class="text-white leading-relaxed mt-10" style="font-size: 16px">
+            Lorem ipsum dolor sit amet consectetur. Pharetra faucibus donec
+            ultrices eros elit rhoncus mauris adipiscing quis. Suspendisse
+            molestie consectetur tortor morbi nisl lacus. Ut tellus vel mauris
+            tempor eget elit. Gravida ut mauris tempor libero. Tellus rhoncus
+            rhoncus et ligula mauris fringilla nec ut. Arcu ultrices ipsum
+            ridiculus tellus. Ut adipiscing facilisis mauris mauris adipiscing
+            ipsum in est. Tempor sed elit nunc diam adipiscing ut.
+          </p>
+          <!-- Second Paragraph -->
+          <p class="text-white leading-relaxed" style="font-size: 16px">
+            Tellus rhoncus rhoncus et ligula mauris fringilla nec ut. Arcu
+            ultrices ipsum ridiculus tellus. Ut adipiscing facilisis mauris
+            mauris adipiscing ipsum in est. Tempor sed elit nunc diam adipiscing
+            ut.
+          </p>
+          <!-- Connect Wallet Button -->
+          <div class="pt-4">
+            <button
+              class="bg-[#67625E] hover:bg-[#DA8F4D] border-2 border-[#DA8F4D] text-white font-semibold rounded-full transition-colors duration-200"
+              style="width: 199px; height: 58px"
+            >
+              Connect Wallet
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,542 @@
+<style>
+  body {
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+  }
+
+  .title-section {
+    background-color: #000000;
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  .title-section h1 {
+    color: #f59e0b;
+    font-size: 45px;
+    line-height: 55px;
+    font-weight: 700;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+  }
+
+  .roadmap-container {
+    float: left;
+    width: 100%;
+    padding: 50px 0;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    background-image: url("images/roadmap_img.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  .roadmap-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(251, 146, 60, 0.1) 0%,
+        rgba(0, 0, 0, 0.7) 50%,
+        rgba(0, 0, 0, 0.9) 100%
+      ),
+      radial-gradient(
+        ellipse at 20% 80%,
+        rgba(251, 146, 60, 0.05) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 80% 20%,
+        rgba(251, 146, 60, 0.05) 0%,
+        transparent 50%
+      );
+    z-index: 1;
+  }
+
+  .roadmap-auto {
+    max-width: 950px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .roadmap-container .roadmap-timeline {
+    padding-top: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .roadmap-container .timeline-dot {
+    position: absolute;
+    left: 50%;
+    z-index: 3;
+    width: 8px;
+    height: 8px;
+    margin-left: -6px;
+    border: 2px solid #f59e0b;
+    border-radius: 6px;
+    background: radial-gradient(circle, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.8),
+      0 0 40px rgba(251, 146, 60, 0.4);
+  }
+
+  .roadmap-container .timeline-list {
+    float: left;
+    width: 100%;
+    position: relative;
+  }
+
+  .roadmap-container .timeline-list .timeline-list-col {
+    float: left;
+    width: 50%;
+    padding-top: 50px;
+    padding-right: 0;
+    padding-left: 0;
+    position: relative;
+    z-index: 3;
+  }
+
+  .roadmap-container .timeline-list .timeline-item-block {
+    width: 350px;
+    margin-bottom: 50px;
+    float: left;
+    text-align: left;
+  }
+
+  .roadmap-container .timeline-list .timeline-item-block .timeline-item-time {
+    position: relative;
+    width: 320px;
+    min-height: 36px;
+  }
+
+  .roadmap-container .timeline-list .timeline-item-block .timeline-item-label {
+    float: none;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+    text-align: left;
+    text-transform: uppercase;
+    color: #f59e0b;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .roadmap-container .timeline-list .timeline-item-block .timeline-item-title {
+    float: none;
+    width: 100%;
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  .roadmap-container
+    .timeline-list
+    .timeline-item-block
+    .timeline-item-content {
+    position: relative;
+    left: 0;
+    width: 320px;
+    margin-top: 0;
+    margin-right: 40px;
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    color: #d1d5db;
+    font-weight: 400;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(251, 146, 60, 0.6);
+    border-radius: 12px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .roadmap-container .timeline-list .timeline-col-right {
+    padding-top: 150px;
+  }
+
+  .roadmap-container .timeline-list .timeline-col-right .timeline-item-block {
+    float: right;
+  }
+
+  .roadmap-container .timeline-list .timeline-col-right .timeline-item-label {
+    float: none;
+    text-align: left;
+  }
+
+  .roadmap-container .timeline-list .timeline-col-right .timeline-item-title {
+    float: none;
+    text-align: left;
+  }
+
+  .roadmap-container .timeline-list .timeline-item-content {
+    text-align: left;
+    margin-left: 0px;
+    margin-right: 0;
+  }
+
+  .roadmap-container .timeline-list .timeline-list-vr {
+    width: 0;
+    height: 100%;
+    border-left: 2px solid #f59e0b;
+    position: absolute;
+    left: 50%;
+    margin-left: -1px;
+    z-index: 2;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #f59e0b 10%,
+      #f59e0b 90%,
+      transparent 100%
+    );
+  }
+
+  .roadmap-container .timeline-list .timeline-item-label-hr {
+    float: left;
+    width: 475px;
+    height: 3px;
+    background: linear-gradient(
+      145deg,
+      rgba(251, 146, 60, 0.8),
+      rgba(251, 146, 60, 0.4)
+    );
+    position: relative;
+  }
+
+  .roadmap-container .timeline-list .timeline-item-block .item-dot {
+    left: auto;
+    right: 0;
+    bottom: -5px;
+    margin-right: -6px;
+    margin-left: 0;
+    position: absolute;
+    z-index: 3;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f59e0b;
+    border-radius: 100%;
+    background: radial-gradient(circle, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 0 15px rgba(251, 146, 60, 0.6);
+  }
+
+  .roadmap-container .timeline-list .timeline-col-right .item-dot {
+    left: 0;
+    right: auto;
+    margin-right: 0;
+    margin-left: -7px;
+  }
+
+  .roadmap-container
+    .timeline-list
+    .timeline-col-right
+    .timeline-item-label-hr {
+    margin-left: -125px;
+  }
+
+  .roadmap-container .timeline-list .timeline-item-block-mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 950px) {
+    .title-section h1 {
+      font-size: 32px;
+      line-height: 38px;
+    }
+
+    .roadmap-container {
+      padding: 22px 0;
+    }
+
+    .roadmap-container .timeline-list .timeline-list-vr {
+      left: 20px;
+    }
+
+    .roadmap-container .timeline-dot {
+      left: 20px;
+    }
+
+    .roadmap-container .roadmap-timeline {
+      padding-top: 0;
+    }
+
+    .roadmap-container .timeline-list .timeline-list-col {
+      float: none;
+      width: auto;
+      margin-left: 25px;
+      padding-left: 25px;
+      margin-right: 25px;
+    }
+
+    .roadmap-container .timeline-list .timeline-item-block-mobile {
+      display: block;
+    }
+
+    .roadmap-container .timeline-list .timeline-item-block .timeline-item-time {
+      width: auto;
+    }
+
+    .roadmap-container .timeline-list .timeline-item-label-hr {
+      float: none;
+      width: auto;
+      margin-left: -30px;
+    }
+
+    .roadmap-container
+      .timeline-list
+      .timeline-item-block
+      .timeline-item-label {
+      float: none;
+    }
+
+    .roadmap-container
+      .timeline-list
+      .timeline-item-block
+      .timeline-item-title {
+      float: none;
+      text-align: left;
+    }
+
+    .roadmap-container .timeline-list .timeline-item-block .item-dot {
+      left: 0;
+      right: auto;
+      margin-left: -6px;
+      margin-right: 0;
+    }
+
+    .roadmap-container
+      .timeline-list
+      .timeline-item-block
+      .timeline-item-content {
+      float: none;
+      width: auto;
+      margin-right: 0;
+    }
+
+    .roadmap-container .timeline-list .timeline-col-right {
+      display: none;
+    }
+
+    .roadmap-container .timeline-list .timeline-item-block {
+      float: none;
+      width: auto;
+    }
+
+    .roadmap-container
+      .timeline-list
+      .timeline-item-block
+      .timeline-item-content {
+      width: auto;
+      margin-right: 0;
+    }
+  }
+</style>
+<div class="text-white overflow-x-hidden">
+  <!-- Title Section (Outside background image) -->
+  <div class="title-section">
+    <h1>Road Map</h1>
+  </div>
+
+  <!-- Roadmap Section (With background image) -->
+  <div id="roadmap-container" class="roadmap-container">
+    <div class="roadmap-auto">
+      <div class="spacer-block">&nbsp;</div>
+      <div class="roadmap-timeline">
+        <div class="timeline-dot">&nbsp;</div>
+        <div class="timeline-list">
+          <div class="timeline-list-vr">&nbsp;</div>
+
+          <!-- Left Column -->
+          <div class="timeline-list-col timeline-col-left">
+            <!-- January - Brief -->
+            <div class="timeline-item-block">
+              <div class="timeline-item-time">
+                <div class="timeline-item-label" style="display: none"></div>
+              </div>
+              <div class="timeline-item-label-hr">
+                <div class="item-dot timeline-dot">&nbsp;</div>
+              </div>
+              <div class="timeline-item-content">
+                <div class="timeline-item-label">January</div>
+                <div class="timeline-item-title">Brief</div>
+                <div class="timeline-item-description">
+                  Lorem ipsum dolor sit amet consectetur. Elit rhoncus amet
+                  magna non tempor. Sit in lorem sed ante tempor tristique.
+                  Elementum ut quam.
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile February -->
+            <div class="timeline-item-block timeline-item-block-mobile">
+              <div class="timeline-item-time">
+                <div class="timeline-item-label" style="display: none"></div>
+              </div>
+              <div class="timeline-item-label-hr">
+                <div class="item-dot timeline-dot">&nbsp;</div>
+              </div>
+              <div class="timeline-item-content">
+                <div class="timeline-item-label">February</div>
+                <div class="timeline-item-title">Research</div>
+                <div class="timeline-item-description">
+                  Lorem ipsum dolor sit amet consectetur. Elit rhoncus amet
+                  magna non tempor. Sit in lorem sed ante tempor tristique.
+                  Elementum ut quam.
+                </div>
+              </div>
+            </div>
+
+            <!-- March - Discover -->
+            <div class="timeline-item-block">
+              <div class="timeline-item-time">
+                <div class="timeline-item-label" style="display: none"></div>
+              </div>
+              <div class="timeline-item-label-hr">
+                <div class="item-dot timeline-dot">&nbsp;</div>
+              </div>
+              <div class="timeline-item-content">
+                <div class="timeline-item-label">March</div>
+                <div class="timeline-item-title">Discover</div>
+                <div class="timeline-item-description">
+                  Lorem ipsum dolor sit amet consectetur. Elit rhoncus amet
+                  magna non tempor. Sit in lorem sed ante tempor tristique.
+                  Elementum ut quam.
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile April -->
+            <div class="timeline-item-block timeline-item-block-mobile">
+              <div class="timeline-item-time">
+                <div class="timeline-item-label" style="display: none"></div>
+              </div>
+              <div class="timeline-item-label-hr">
+                <div class="item-dot timeline-dot">&nbsp;</div>
+              </div>
+              <div class="timeline-item-content">
+                <div class="timeline-item-label">April</div>
+                <div class="timeline-item-title">Design</div>
+                <div class="timeline-item-description">
+                  Lorem ipsum dolor sit amet consectetur. Elit rhoncus amet
+                  magna non tempor. Sit in lorem sed ante tempor tristique.
+                  Elementum ut quam.
+                </div>
+              </div>
+            </div>
+
+            <!-- May - Testing -->
+            <div class="timeline-item-block">
+              <div class="timeline-item-time">
+                <div class="timeline-item-label" style="display: none"></div>
+              </div>
+              <div class="timeline-item-label-hr">
+                <div class="item-dot timeline-dot">&nbsp;</div>
+              </div>
+              <div class="timeline-item-content">
+                <div class="timeline-item-label">May</div>
+                <div class="timeline-item-title">Testing</div>
+                <div class="timeline-item-description">
+                  Lorem ipsum dolor sit amet consectetur. Elit rhoncus amet
+                  magna non tempor. Sit in lorem sed ante tempor tristique.
+                  Elementum ut quam.
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile June -->
+            <div class="timeline-item-block timeline-item-block-mobile">
+              <div class="timeline-item-time">
+                <div class="timeline-item-label" style="display: none"></div>
+              </div>
+              <div class="timeline-item-label-hr">
+                <div class="item-dot timeline-dot">&nbsp;</div>
+              </div>
+              <div class="timeline-item-content">
+                <div class="timeline-item-label">June</div>
+                <div class="timeline-item-title">Launch & Feedback</div>
+                <div class="timeline-item-description">
+                  Lorem ipsum dolor sit amet consectetur. Elit rhoncus amet
+                  magna non tempor. Sit in lorem sed ante tempor tristique.
+                  Elementum ut quam.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="timeline-list-col timeline-col-right">
+            <!-- February - Research -->
+            <div class="timeline-item-block">
+              <div class="timeline-item-time">
+                <div class="timeline-item-label" style="display: none"></div>
+              </div>
+              <div class="timeline-item-label-hr">
+                <div class="item-dot timeline-dot">&nbsp;</div>
+              </div>
+              <div class="timeline-item-content">
+                <div class="timeline-item-label">February</div>
+                <div class="timeline-item-title">Research</div>
+                <div class="timeline-item-description">
+                  Lorem ipsum dolor sit amet consectetur. Elit rhoncus amet
+                  magna non tempor. Sit in lorem sed ante tempor tristique.
+                  Elementum ut quam.
+                </div>
+              </div>
+            </div>
+
+            <!-- April - Design -->
+            <div class="timeline-item-block">
+              <div class="timeline-item-time">
+                <div class="timeline-item-label" style="display: none"></div>
+              </div>
+              <div class="timeline-item-label-hr">
+                <div class="item-dot timeline-dot">&nbsp;</div>
+              </div>
+              <div class="timeline-item-content">
+                <div class="timeline-item-label">April</div>
+                <div class="timeline-item-title">Design</div>
+                <div class="timeline-item-description">
+                  Lorem ipsum dolor sit amet consectetur. Elit rhoncus amet
+                  magna non tempor. Sit in lorem sed ante tempor tristique.
+                  Elementum ut quam.
+                </div>
+              </div>
+            </div>
+
+            <!-- June - Launch & Feedback -->
+            <div class="timeline-item-block">
+              <div class="timeline-item-time">
+                <div class="timeline-item-label" style="display: none"></div>
+              </div>
+              <div class="timeline-item-label-hr">
+                <div class="item-dot timeline-dot">&nbsp;</div>
+              </div>
+              <div class="timeline-item-content">
+                <div class="timeline-item-label">June</div>
+                <div class="timeline-item-title">Launch & Feedback</div>
+                <div class="timeline-item-description">
+                  Lorem ipsum dolor sit amet consectetur. Elit rhoncus amet
+                  magna non tempor. Sit in lorem sed ante tempor tristique.
+                  Elementum ut quam.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
