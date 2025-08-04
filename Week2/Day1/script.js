@@ -75,30 +75,32 @@ document.getElementById("calculate").addEventListener("click", function () {
 
   let hasError = false;
 
-  // Required field checks
-  if (!dayInput.value) {
+  // Required field checks (simple first pass)
+  if (!dayInput.value.trim()) {
     showError("day", "This field is required");
     hasError = true;
-  } else if (isNaN(day) || day < 1 || day > 31) {
-    showError("day", "Must be a valid day");
-    hasError = true;
   }
-
-  if (!monthInput.value) {
+  if (!monthInput.value.trim()) {
     showError("month", "This field is required");
     hasError = true;
-  } else if (isNaN(month) || month < 1 || month > 12) {
-    showError("month", "Must be a valid month");
+  }
+  if (!yearInput.value.trim()) {
+    showError("year", "This field is required");
     hasError = true;
   }
 
-  if (!yearInput.value) {
-    showError("year", "This field is required");
-    hasError = true;
-  } else if (isNaN(year) || year < 1900 || year > currentDate.getFullYear()) {
-    showError("year", "Must be a valid year");
-    hasError = true;
-  }
+  // Stop further validation if any field is empty
+  if (hasError) return;
+
+  // Now do individual validation
+  validateField("day");
+  validateField("month");
+  validateField("year");
+
+  // Re-check for visible error messages
+  const anyErrorStill = document.querySelectorAll(".error-message");
+  if (anyErrorStill.length > 0) return;
+
 
 if (!hasError) {
   if (!isValidDate(day, month, year)) {
@@ -193,3 +195,77 @@ document.getElementById("clear-btn").addEventListener("click", function () {
   });
 });
 
+
+
+function validateField(id) {
+  const day = parseInt(document.getElementById("day").value, 10);
+  const month = parseInt(document.getElementById("month").value, 10);
+  const year = parseInt(document.getElementById("year").value, 10);
+  const currentDate = new Date();
+
+  const input = document.getElementById(id);
+  const value = input.value.trim();
+
+  // Required field check
+  if (value === "") {
+    showError(id, "This field is required");
+    return;
+  }
+
+  // Individual field checks
+  if (id === "day") {
+    if (isNaN(day) || day < 1 || day > 31) {
+      showError("day", "Must be a valid day");
+      return;
+    } else {
+      clearFieldError("day");
+    }
+  }
+
+  if (id === "month") {
+    if (isNaN(month) || month < 1 || month > 12) {
+      showError("month", "Must be a valid month");
+      return;
+    } else {
+      clearFieldError("month");
+    }
+  }
+
+  if (id === "year") {
+    if (isNaN(year) || year < 1900 || year > currentDate.getFullYear()) {
+      showError("year", "Must be a valid year");
+      return;
+    } else if (!isNaN(day) && !isNaN(month) && new Date(year, month - 1, day) >= currentDate) {
+      showError("year", "Must be in past");
+      return;
+    } else {
+      clearFieldError("year");
+    }
+  }
+
+  // Check if full date is valid only when all 3 fields are filled
+  if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+    if (!isValidDate(day, month, year)) {
+      showError("day", "Must be a valid date");
+    } else {
+      clearFieldError("day");
+    }
+  }
+}
+
+
+function clearFieldError(id) {
+  const input = document.getElementById(id);
+  const group = input.parentElement;
+
+  const error = group.querySelector(".error-message");
+  if (error) error.remove();
+
+  input.style.borderColor = "";
+  group.querySelector("label").style.color = "";
+}
+
+["day", "month", "year"].forEach((id) => {
+  const input = document.getElementById(id);
+  input.addEventListener("input", () => validateField(id));
+});
