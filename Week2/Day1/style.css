@@ -1,0 +1,304 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: hsl(0, 0%, 94%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Main Container */
+.container {
+  background-color: hsl(0, 100%, 100%);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 550px;
+  text-align: center;
+  border-bottom-right-radius: 150px;
+  box-sizing: border-box;
+}
+
+/* Input Row */
+.input-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+/* Label & Input Grouping */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 90px;
+}
+
+/* Label Styling */
+.input-group label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: hsl(0, 1%, 44%);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+/* Input Fields */
+.input-section input {
+  width: 100%;
+  min-width: 80px;
+  height: 48px;
+  padding: 0 10px;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: bold;
+  border: 1px solid hsl(0, 0%, 86%);
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Line + Button */
+.btn-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 50px 0;
+}
+
+.btn-line .line {
+  height: 1px;
+  background-color: hsl(0, 7%, 82%);
+  width: 100%;
+}
+
+/* Arrow Button */
+#calculate {
+  background-color: hsl(259, 100%, 65%);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#calculate img {
+  width: 36px;
+  height: 36px;
+}
+
+#calculate:hover {
+  background-color: black;
+  transform: translateY(-50%) scale(1.1); /* Zooms in slightly on hover */
+}
+
+/* Output Section */
+.output-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 8px;
+  line-height: 0.7;
+  width: 100%;
+}
+
+.output-section h1 {
+  font-size: clamp(2rem, 6vw, 4rem); /* scales from ~32px to 64px */
+  margin: 10px 0;
+  color: hsl(0, 0%, 0%);
+  word-break: break-word;
+  font-style: italic;
+}
+
+.output-section span {
+  font-weight: bold;
+  color: hsl(259, 100%, 65%);
+}
+
+/* Small Devices (Phones) */
+@media (max-width: 480px) {
+  .input-section {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .button-section {
+    margin-top: 30px;
+  }
+  .input-group {
+    flex: 1;
+    min-width: 75px;
+  }
+
+  .input-section input {
+    font-size: 1rem;
+    height: 42px;
+    padding: 0 6px;
+  }
+
+  /* .input-section input {
+    font-size: 1.5rem;
+    height: 44px;
+  } */
+
+  #calculate {
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  .output-section h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Heading */
+.heading {
+  font-size: clamp(2rem, 6vw, 4rem);
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+  color: hsl(259, 100%, 65%);
+  animation: fadeDown 1s ease-in-out;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: hsl(0, 0%, 40%);
+  font-weight: 500;
+  animation: fadeUp 1s ease-in-out;
+}
+
+.footer .highlight {
+  color: hsl(259, 100%, 65%);
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply animation classes */
+.fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.slide-in {
+  animation: slideIn 1s ease-in-out;
+}
+
+/* Clear Button Container */
+.clear-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  animation: bounceIn 0.8s ease-in-out forwards;
+}
+
+/* Initially hidden */
+.hidden {
+  display: none;
+}
+
+/* Clear Button Styling */
+#clear-btn {
+  padding: 12px 30px;
+  background-color: hsl(259, 100%, 65%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#clear-btn:hover {
+  background-color: black;
+  transform: scale(1.05);
+}
+
+/* Animation */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  #clear-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
