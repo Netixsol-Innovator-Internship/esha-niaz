@@ -160,7 +160,36 @@ animateCountUp("days", ageDay);
 });
 
 // ✅ Clear button functionality
+// ✅ Clear button functionality without page reload
 document.getElementById("clear-btn").addEventListener("click", function () {
-  // Reload page to reset everything
-  window.location.reload();
+  // Clear input fields
+  document.getElementById("day").value = "";
+  document.getElementById("month").value = "";
+  document.getElementById("year").value = "";
+
+  // Reset output
+  document.getElementById("years").textContent = "--";
+  document.getElementById("months").textContent = "--";
+  document.getElementById("days").textContent = "--";
+
+  // Hide clear button again (optional)
+  document.getElementById("clear-container").classList.add("hidden");
+
+  // Clear errors if any
+  clearErrors();
 });
+
+
+// Remove error styles and messages when any input is focused
+["day", "month", "year"].forEach((id) => {
+  const input = document.getElementById(id);
+  input.addEventListener("focus", () => {
+    const group = input.parentElement;
+    const error = group.querySelector(".error-message");
+    if (error) error.remove();
+
+    input.style.borderColor = ""; // Reset border
+    group.querySelector("label").style.color = ""; // Reset label color
+  });
+});
+
