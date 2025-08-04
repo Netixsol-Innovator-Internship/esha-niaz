@@ -183,17 +183,17 @@ document.getElementById("clear-btn").addEventListener("click", function () {
 
 
 // Remove error styles and messages when any input is focused
-["day", "month", "year"].forEach((id) => {
-  const input = document.getElementById(id);
-  input.addEventListener("focus", () => {
-    const group = input.parentElement;
-    const error = group.querySelector(".error-message");
-    if (error) error.remove();
+// ["day", "month", "year"].forEach((id) => {
+//   const input = document.getElementById(id);
+//   input.addEventListener("focus", () => {
+//     const group = input.parentElement;
+//     const error = group.querySelector(".error-message");
+//     if (error) error.remove();
 
-    input.style.borderColor = ""; // Reset border
-    group.querySelector("label").style.color = ""; // Reset label color
-  });
-});
+//     input.style.borderColor = ""; // Reset border
+//     group.querySelector("label").style.color = ""; // Reset label color
+//   });
+// });
 
 
 
@@ -244,13 +244,19 @@ function validateField(id) {
   }
 
   // Check if full date is valid only when all 3 fields are filled
-  if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
-    if (!isValidDate(day, month, year)) {
-      showError("day", "Must be a valid date");
-    } else {
-      clearFieldError("day");
-    }
+// Check if full date is valid ONLY IF day and month are in acceptable range
+if (
+  !isNaN(day) && day >= 1 && day <= 31 &&
+  !isNaN(month) && month >= 1 && month <= 12 &&
+  !isNaN(year)
+) {
+  if (!isValidDate(day, month, year)) {
+    showError("day", "Must be a valid date");
+  } else {
+    clearFieldError("day");
   }
+}
+
 }
 
 
