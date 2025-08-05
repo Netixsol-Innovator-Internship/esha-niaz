@@ -11,6 +11,10 @@ button.addEventListener('click', () => {
         
     });
     document.getElementById('num').innerText = '0';
+
+
+button.classList.add('disabled');
+
 })
 
 
