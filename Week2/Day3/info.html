@@ -1,0 +1,200 @@
+<style>
+  .restaurant-info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1728px;
+    padding: 4rem 1rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    background-color: #fbfbfb;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+  }
+
+  .info-column {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-column.operational {
+    background-color: #03081f;
+    color: white;
+  }
+
+  .info-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    margin-top: 1.5rem;
+  }
+
+  .info-header img {
+    width: 2.5rem;
+  }
+
+  .info-header h1 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+
+  .info-column p {
+    margin-bottom: 0.5rem;
+    line-height: 1.75rem;
+  }
+
+  .day-label {
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .contact-description {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+
+  .contact-label {
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .contact-value {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 639px) {
+    .container {
+      padding: 4rem 1rem;
+    }
+
+    .info-column {
+      padding-bottom: 2.5rem;
+    }
+
+    .info-header {
+      margin-top: 0;
+    }
+  }
+
+  /* Small screens (sm) - 640px and up */
+  @media (min-width: 640px) {
+    .container {
+      padding: 4rem 2.5rem;
+    }
+  }
+
+  /* Medium screens (md) - 768px and up */
+  @media (min-width: 768px) {
+    .container {
+      padding: 4rem 4rem;
+    }
+  }
+
+  /* Large screens (lg) - 1024px and up */
+  @media (min-width: 1024px) {
+    .container {
+      padding: 4rem 5rem;
+    }
+
+    .info-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .info-column {
+      padding: 5rem 2.5rem;
+    }
+
+    .info-column:last-child {
+      padding-bottom: 5rem;
+    }
+
+    .info-header {
+      margin-top: 0;
+    }
+  }
+
+  /* Extra large screens (xl) - 1280px and up */
+  @media (min-width: 1280px) {
+    .info-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+</style>
+<section class="restaurant-info-section">
+  <div class="container">
+    <div class="info-grid">
+      <!-- col 1 -->
+      <div class="info-column">
+        <div class="info-header">
+          <img src="images/Tracking.png" alt="location" />
+          <h1>Delivery information</h1>
+        </div>
+        <p>
+          <span class="day-label">Monday:</span> 12:00 AM–3:00 AM, 8:00 AM–3:00
+          AM
+        </p>
+        <p><span class="day-label">Tuesday:</span> 8:00 AM–3:00 AM</p>
+        <p><span class="day-label">Wednesday:</span> 8:00 AM–3:00 AM</p>
+        <p><span class="day-label">Thursday:</span> 8:00 AM–3:00 AM</p>
+        <p><span class="day-label">Friday:</span> 8:00 AM–3:00 AM</p>
+        <p><span class="day-label">Saturday:</span> 8:00 AM–3:00 AM</p>
+        <p><span class="day-label">Sunday:</span> 8:00 AM–12:00 AM</p>
+        <p>
+          <span class="day-label">Estimated time until delivery:</span> 20 min
+        </p>
+      </div>
+
+      <!-- col 2 -->
+      <div class="info-column">
+        <div class="info-header">
+          <img src="images/ID Verified.png" alt="contact" />
+          <h1>Contact information</h1>
+        </div>
+        <p class="contact-description">
+          If you have allergies or other dietary restrictions, please contact
+          the restaurant. The restaurant will provide food-specific information
+          upon request.
+        </p>
+        <span class="contact-label">Phone number</span>
+        <p class="contact-value">+934443-43</p>
+        <span class="contact-label">Website</span>
+        <p class="contact-value">http://mcdonalds.uk/</p>
+      </div>
+
+      <!-- col 3 -->
+      <div class="info-column operational">
+        <div class="info-header">
+          <img src="images/Clock_2.png" alt="clock" />
+          <h1>Operational Times</h1>
+        </div>
+        <p><span class="day-label">Monday:</span> 12:00 AM–3:00 AM</p>
+        <p><span class="day-label">Tuesday:</span> 8:00 AM–3:00 AM</p>
+        <p><span class="day-label">Wednesday:</span> 8:00 AM–3:00 AM</p>
+        <p><span class="day-label">Thursday:</span> 8:00 AM–3:00 AM</p>
+        <p><span class="day-label">Friday:</span> 8:00 AM–3:00 AM</p>
+        <p><span class="day-label">Saturday:</span> 8:00 AM–3:00 AM</p>
+        <p><span class="day-label">Sunday:</span> 8:00 AM–12:00 AM</p>
+      </div>
+    </div>
+  </div>
+</section>

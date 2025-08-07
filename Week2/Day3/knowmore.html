@@ -1,0 +1,323 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Know More About Us</title> -->
+<style>
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 60px;
+  }
+
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .main-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+    padding: 4px;
+  }
+
+  .nav-tab {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    background: transparent;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .nav-tab.active {
+    background-color: #f5f5f5;
+    border: 1px solid #ff8c00;
+    color: #1a1a1a;
+  }
+
+  .nav-tab:hover {
+    background-color: #f8f8f8;
+    color: #1a1a1a;
+  }
+
+  .content-area {
+    background-color: #1a1f3a;
+    border-radius: 12px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .faq-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .faq-item {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .faq-item.active {
+    background-color: #ff8c00;
+    color: #1a1a1a;
+    padding: 15px 50px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .faq-item:not(.active) {
+    color: white;
+    text-align: center;
+  }
+
+  .faq-item:not(.active):hover {
+    color: #ff8c00;
+  }
+
+  .features-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .feature-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .feature-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 8px;
+  }
+
+  .feature-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+
+  .feature-description {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .bottom-description {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .main-container {
+      padding: 30px;
+    }
+
+    .content-area {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    .feature-cards {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-container {
+      padding: 20px;
+    }
+
+    .header-section {
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .main-title {
+      font-size: 24px;
+    }
+
+    .nav-tabs {
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-tab {
+      padding: 10px 16px;
+      font-size: 13px;
+    }
+
+    .content-area {
+      padding: 24px;
+    }
+
+    .faq-item {
+      font-size: 15px;
+    }
+
+    .feature-card {
+      padding: 20px 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    body {
+      padding: 20px 10px;
+    }
+
+    .main-container {
+      padding: 16px;
+    }
+
+    .main-title {
+      font-size: 20px;
+    }
+
+    .nav-tabs {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .nav-tab {
+      text-align: center;
+      padding: 12px;
+    }
+
+    .content-area {
+      padding: 20px;
+    }
+
+    .faq-item {
+      font-size: 14px;
+    }
+
+    .feature-title {
+      font-size: 15px;
+    }
+
+    .feature-description {
+      font-size: 12px;
+    }
+  }
+</style>
+<!-- </head> -->
+<body>
+  <div class="main-container">
+    <div class="header-section">
+      <h1 class="main-title">Know more about us!</h1>
+      <div class="nav-tabs">
+        <button class="nav-tab active">Frequent Questions</button>
+        <button class="nav-tab">Who we are?</button>
+        <button class="nav-tab">Partner Program</button>
+        <button class="nav-tab">Help & Support</button>
+      </div>
+    </div>
+
+    <div class="content-area">
+      <div class="faq-section">
+        <div class="faq-item active">How does Order UK work?</div>
+        <div class="faq-item">What payment methods are accepted?</div>
+        <div class="faq-item">Can I track my order in real-time?</div>
+        <div class="faq-item">
+          Are there any special discounts or promotions available?
+        </div>
+        <div class="faq-item">Is Order UK available in my area?</div>
+      </div>
+
+      <div class="features-section">
+        <div class="feature-cards">
+          <div class="feature-card">
+            <img
+              src="images/order-food 1.png"
+              alt="Place Order"
+              class="feature-icon"
+            />
+            <div class="feature-title">Place an Order!</div>
+            <div class="feature-description">
+              Place order through our website or Mobile app
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <img
+              src="images/food2.png"
+              alt="Track Progress"
+              class="feature-icon"
+            />
+            <div class="feature-title">Track Progress</div>
+            <div class="feature-description">
+              You can track your order status with delivery time
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <img src="images/food3.png" alt="Get Order" class="feature-icon" />
+            <div class="feature-title">Get your Order!</div>
+            <div class="feature-description">
+              Receive your order at a lighting fast speed!
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-description">
+          Order UK simplifies the food ordering process. Browse through our
+          diverse menu, select your favorite dishes, and proceed to checkout.
+          Your delicious meal will be on its way to your doorstep in no time!
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- </html> -->

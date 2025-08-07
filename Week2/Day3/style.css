@@ -1,0 +1,1330 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #000000;
+}
+
+/* header  */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.header-content {
+  max-width: 1728px;
+  width: 100%;
+  padding: 26px 137px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-content nav.menu {
+  font-weight: 400;
+  display: flex;
+  gap: 30px;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-content nav.menu a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.header-content nav.menu button {
+  background-color: #fc8a06;
+  padding: 15px 20px;
+  border-radius: 120px;
+  border: none;
+  color: #000000;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.cart {
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.cart img {
+  padding: 10px;
+  background: #000000;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mobile menu toggle - hidden by default */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* hero section */
+.hero {
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.hero-content {
+  border-radius: 12px;
+  position: relative;
+  background-image: url(images/hero-burger.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 1728px;
+  width: 100%;
+  margin: 0 100px;
+  height: 477px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(2px);
+  background-color: #03081fe5;
+  z-index: 1;
+}
+
+.hero-content > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content .left-content {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 7rem;
+}
+
+.hero-content .left-content h6 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.hero-content .left-content h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.hero-content .left-content .order-delivery {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero-content .left-content .order-delivery .gbp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 120px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.hero-content .left-content .order-delivery .delivery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 120px;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 8px 18px;
+}
+
+.hero-content .right-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content .right-img img.burger {
+  object-fit: cover;
+  width: 30.3rem;
+  height: 361px;
+  border-radius: 20px;
+}
+
+.hero-content .right-img img.rating {
+  object-fit: cover;
+  position: absolute;
+  top: 240px;
+  right: 430px;
+  width: 128px;
+  height: 128px;
+  border-radius: 20px;
+}
+
+.timing {
+  display: flex;
+  font-weight: 600;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.timing-container {
+  /* margin-left: 100px; */
+  background-color: #fc8a06;
+  width: 230px;
+  height: 44px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  left: -1px;
+  top: 560px;
+  z-index: 10;
+}
+
+.timing-container p {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* search and offer section */
+.heading-search {
+  /* margin: 20px 120px; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px;
+}
+
+.search {
+  height: 60px;
+  width: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 30px;
+  border: 1px solid black;
+  padding: 20px;
+  gap: 1rem;
+}
+
+.search input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.offers {
+  width: 100%;
+  background-color: #fc8a06;
+  height: 80px;
+}
+
+.offers-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 70px;
+  padding: 30px 0;
+}
+
+.offers-options a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* burgers section starts */
+.container-burgers {
+  margin: 20px 70px;
+  overflow-x: hidden;
+}
+
+.container-burgers h1 {
+  margin-bottom: 30px;
+  font-weight: 800;
+}
+
+.burgers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-left: 16px;
+  padding-bottom: 20px;
+}
+
+.burger-box {
+  width: 380px;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.right {
+  position: relative;
+}
+
+.right img {
+  margin-top: 10px;
+  width: 140px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.left p {
+  font-size: 12px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.plus-cont {
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  right: 0px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 45px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+
+.plus-cont:hover {
+  background-color: #fc8a06;
+}
+
+.plus-cont img {
+  width: 50px;
+  height: auto;
+}
+
+/* fries section */
+.fires-heading {
+  color: #fc8a06;
+}
+
+/* customer review section  */
+.customer-review {
+  padding: 70px;
+  background-color: #d9d9d9;
+  position: relative;
+}
+
+.customer-review .heading-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.customer-review .heading-area .heading {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.arrows {
+  display: flex;
+  gap: 12px;
+}
+
+.arrows img {
+  width: 60px;
+  height: 60px;
+}
+
+.customer-review .review-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 10px;
+}
+
+.customer-review .review-area .reviews {
+  background-color: #ffffff;
+  height: auto;
+  padding: 20px;
+}
+
+.profile-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 23px;
+  margin-bottom: 20px;
+}
+
+.profile-rating .profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-rating .profile p {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.profile-rating .profile p span {
+  font-size: 12px;
+  color: #fc8a06;
+  font-weight: 400;
+}
+
+.profile-rating .profile img.dp {
+  width: 48px;
+  height: 48px;
+}
+
+.profile-rating .rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.rating .stars {
+  margin-bottom: 5px;
+}
+
+.rating .time {
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.rating .time img {
+  width: 18px;
+  height: 18px;
+}
+
+.reviews .para {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.review-img {
+  position: absolute;
+  right: 45%;
+  bottom: -16%;
+}
+
+.review-img img {
+  border-radius: 10px;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.similar-Restaurants {
+  margin: 80px 70px 60px;
+}
+
+.similar-Restaurants h1 {
+  margin-bottom: 40px;
+  font-weight: 900;
+}
+
+.similar-Restaurants .restaurants {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.similar-Restaurants .restaurants img {
+  width: 190px;
+  height: auto;
+}
+
+/* Footer */
+footer {
+  background-color: #03081f;
+  padding: 1.4rem 4.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.foot-left {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* footer-top-section */
+.footer-top-section {
+  padding: 5rem 4.7rem 4rem;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.part-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.part-1 p {
+  font-size: 15px;
+}
+
+.part-1 img.footer-log {
+  width: 249px;
+  height: auto;
+}
+
+.play-stores {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.play-stores img {
+  width: 150px;
+  height: auto;
+}
+
+.part-2 {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.part-2 p {
+  font-size: 12px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+.part-2 .icons img {
+  width: 35px;
+  height: 35px;
+}
+
+.subscribe-container {
+  position: relative;
+}
+
+.subscribe-container input {
+  width: 300px;
+  height: 50px;
+  background-color: #bcbcbc;
+  border: none;
+  border-radius: 45px;
+  padding: 10px 25px;
+  color: black;
+  font-size: 15px;
+}
+
+.subscribe-container button {
+  height: 50px;
+  width: 100px;
+  background-color: #fc8a06;
+  border: none;
+  border-radius: 45px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 15px;
+  color: white;
+}
+
+.part-2 .icons {
+  margin-left: 20px;
+}
+
+.part-3 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.part-3 .legal-pages {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.part-3 .imp-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.part-3 .imp-links a {
+  color: #000000;
+  font-size: 15px;
+}
+
+.part-3 .legal-pages a {
+  color: #000000;
+  font-size: 15px;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Large Desktop (1200px - 1719px) */
+@media screen and (max-width: 1719px) {
+  .header-content {
+    padding: 26px 80px;
+  }
+
+  .hero-content {
+    margin: 0 80px;
+  }
+
+  .timing-container {
+    margin-left: 80px;
+  }
+
+  .heading-search {
+    margin: 20px 80px;
+  }
+
+  .container-burgers {
+    margin: 20px 50px;
+  }
+
+  .similar-Restaurants {
+    margin: 80px 50px 60px;
+  }
+}
+
+/* Tablet and Small Desktop (768px - 1199px) */
+@media screen and (max-width: 1199px) {
+  .header-content {
+    padding: 20px 40px;
+  }
+
+  .header-content nav.menu {
+    gap: 15px;
+    font-size: 14px;
+  }
+
+  .header-content nav.menu button {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
+  .cart {
+    font-size: 16px;
+  }
+
+  .hero-content {
+    margin: 0 40px;
+    height: 400px;
+    padding: 30px;
+  }
+
+  .hero-content .left-content {
+    margin-top: 4rem;
+  }
+
+  .hero-content .left-content h1 {
+    font-size: 20px;
+  }
+
+  .hero-content .left-content .order-delivery {
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .hero-content .left-content .order-delivery .gbp,
+  .hero-content .left-content .order-delivery .delivery {
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-right: 25px;
+  }
+
+  .hero-content .right-img img.burger {
+    width: 18rem;
+    height: 250px;
+  }
+
+  .hero-content .right-img img.rating {
+    top: 180px;
+    right: 245px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .timing-container {
+    margin-left: 40px;
+    top: 470px;
+    width: 190px;
+  }
+
+  .heading-search {
+    margin: 20px 25px;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .heading-search h2 {
+    font-size: 18px;
+  }
+
+  .search {
+    width: 100%;
+    max-width: 200px;
+    height: 50px;
+    padding: 10px 15px;
+  }
+
+  .offers-options {
+    margin: 20px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .offers-options a {
+    font-size: 15px;
+  }
+
+  .burgers {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .burger-box {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .customer-review {
+    padding: 50px 40px;
+  }
+
+  .customer-review .heading-area .heading {
+    font-size: 32px;
+  }
+
+  .customer-review .review-area {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .review-img {
+    /* position: static; */
+    text-align: center;
+    /* margin-top: 80px; */
+  }
+
+  .review-img img {
+    /* margin-top: 40px; */
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  .similar-Restaurants .restaurants {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .similar-Restaurants .restaurants img {
+    width: 150px;
+  }
+
+  .footer-top-section {
+    padding: 3rem 2rem;
+    flex-direction: row;
+    gap: 30px;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  .part-3 {
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+    text-align: left;
+  }
+
+  footer {
+    padding: 1.4rem 2rem;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .foot-left {
+    width: 100%;
+    flex-direction: row;
+    gap: 5px;
+  }
+}
+
+/* Mobile Large (480px - 767px) */
+@media screen and (max-width: 767px) {
+  .header-content {
+    padding: 15px 20px;
+  }
+
+  .header-content .logo img {
+    width: 100px;
+  }
+  .header-content nav.menu {
+    display: none;
+  }
+
+  .cart {
+    font-size: 14px;
+  }
+
+  .cart img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .hero-content {
+    margin: 0 20px;
+    height: 350px;
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content .left-content {
+    margin-top: 5rem;
+    align-items: center;
+  }
+
+  .hero-content .left-content h1 {
+    font-size: 22px;
+  }
+
+  .hero-content .left-content .order-delivery {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .hero-content .right-img {
+    display: none;
+  }
+
+  .timing-container {
+    margin-left: 20px;
+    top: 385px;
+    width: 150px;
+    /* padding: 2px 5px; */
+  }
+
+  .timing-container p {
+    font-size: 12px;
+  }
+
+  .timing-container img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .heading-search {
+    margin: 20px 0;
+  }
+
+  .heading-search h2 {
+    font-size: 15px;
+  }
+
+  .search {
+    width: 100%;
+    max-width: 150px;
+    height: 40px;
+    padding: 10px 15px;
+  }
+
+  .offers {
+    height: auto;
+    padding: 10px 0;
+  }
+
+  .offers-options {
+    margin: 10px 20px;
+    flex-direction: row;
+    gap: 15px;
+    padding: 2px 0;
+  }
+
+  .offers-options a {
+    font-size: 12px;
+  }
+
+  .container-burgers {
+    margin: 20px 20px;
+  }
+
+  .container-burgers h1 {
+    font-size: 24px;
+  }
+
+  .burgers {
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: 1fr; */
+    gap: 15px;
+    /* padding-left: 0; */
+  }
+
+  .burger-box {
+    width: 100%;
+    height: auto;
+    min-height: 180px;
+  }
+
+  .burger-box .left h3 {
+    font-size: 16px;
+  }
+
+  .burger-box .right img {
+    width: 120px;
+  }
+
+  .burger-box .right img.plus-icon {
+    width: 40px;
+  }
+  .customer-review {
+    padding: 30px 20px;
+  }
+
+  .customer-review .heading-area {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .customer-review .heading-area .heading {
+    font-size: 22px;
+  }
+
+  .customer-review .heading-area .arrows img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .review-img {
+    display: none;
+  }
+
+  .similar-Restaurants {
+    margin: 60px 15px 40px;
+  }
+
+  .similar-Restaurants h1 {
+    font-size: 22px;
+  }
+
+  .similar-Restaurants .restaurants {
+    /* grid-template-columns: repeat(2, 1fr); */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .similar-Restaurants .restaurants img {
+    width: 100%;
+    max-width: 120px;
+  }
+
+  .footer-top-section {
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0.5rem;
+  }
+
+  .part-1 img.footer-log {
+    width: 100px;
+  }
+
+  .part-1 p {
+    font-size: 14px;
+  }
+  .part-3 {
+    flex-direction: row;
+    gap: 30px;
+    text-align: left;
+  }
+
+  .part-2 h3,
+  .part-3 h3 {
+    font-size: 18px;
+  }
+  .play-stores img {
+    width: 100px;
+  }
+
+  .subscribe-container input {
+    width: 250px;
+  }
+
+  .subscribe-container button {
+    width: 80px;
+  }
+
+  footer {
+    padding: 1rem;
+  }
+
+  footer a {
+    font-size: 12px;
+  }
+}
+
+/* Mobile Small (320px - 479px) */
+@media screen and (max-width: 479px) {
+  .header-content {
+    padding: 10px 15px;
+  }
+
+  .logo img {
+    width: 40px;
+  }
+
+  .cart {
+    font-size: 12px;
+    gap: 5px;
+  }
+
+  .hero-content {
+    margin: 12px 15px 0;
+    height: 300px;
+    padding: 15px;
+  }
+
+  .hero-content .left-content {
+    margin-top: 65px;
+  }
+  .hero-content .left-content h6 {
+    font-size: 14px;
+  }
+
+  .hero-content .left-content h1 {
+    font-size: 18px;
+  }
+
+  .hero-content .left-content .order-delivery {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-content .left-content .order-delivery .gbp,
+  .hero-content .left-content .order-delivery .delivery {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+  .hero-content .left-content .order-delivery .gbp img,
+  .hero-content .left-content .order-delivery .delivery img {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* .hero-content .right-img img.burger {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+  } */
+  .timing-container {
+    margin-left: 15px;
+    top: 355px;
+    width: 120px;
+    height: 22px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .timing-container p {
+    font-size: 8px;
+  }
+
+  .timing-container img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .heading-search {
+    margin: 20px 0;
+  }
+
+  .heading-search h2 {
+    font-size: 12px;
+  }
+
+  .search {
+    width: 100%;
+    max-width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    padding: 12px;
+    /* font-size: 5px; */
+  }
+  /* 
+  .search span {
+    width: 16px;
+    height: 16px;
+  }
+
+  .search input {
+    font-size: 10px;
+  } */
+
+  .offers-options a {
+    font-size: 10px;
+  }
+  .offers-options {
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .container-burgers {
+    margin: 15px 15px;
+  }
+
+  .container-burgers h1 {
+    font-size: 20px;
+  }
+
+  .burger-box {
+    width: 100%;
+    height: auto;
+    min-height: 160px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .burger-box .left h3 {
+    font-size: 14px;
+  }
+
+  .burger-box .left p {
+    font-size: 10px;
+  }
+
+  .burger-box .right img {
+    width: 100px;
+  }
+
+  .plus-cont {
+    width: 50px;
+    height: 50px;
+  }
+
+  .plus-cont img.plus-icon {
+    width: 30px;
+  }
+
+  .customer-review {
+    padding: 20px 15px;
+  }
+
+  .customer-review .heading-area .heading {
+    font-size: 20px;
+  }
+
+  .arrows img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .reviews {
+    padding: 15px;
+  }
+
+  .profile-rating {
+    gap: 5px;
+  }
+
+  .profile-rating .profile img.dp {
+    width: 40px;
+    height: 40px;
+  }
+
+  .reviews .para {
+    font-size: 13px;
+  }
+
+  .review-img {
+    /* position: static; */
+    /* text-align: center; */
+    /* margin-top: 10px; */
+    display: none;
+  }
+  .similar-Restaurants {
+    margin: 40px 15px 30px;
+  }
+
+  .similar-Restaurants h1 {
+    font-size: 20px;
+  }
+
+  .footer-top-section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .part-1 img.footer-log {
+    width: 150px;
+  }
+
+  .play-stores {
+    /* flex-direction: column; */
+    gap: 10px;
+  }
+
+  .play-stores img {
+    width: 100px;
+  }
+
+  .part-2 h3 {
+    font-size: 16px;
+  }
+
+  .subscribe-container input {
+    width: 200px;
+    height: 45px;
+    font-size: 11px;
+  }
+
+  .subscribe-container button {
+    width: 70px;
+    height: 45px;
+    margin-right: 10px;
+    /* padding: 10px 15px; */
+    font-size: 11px;
+  }
+
+  .part-2 .icons img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .part-3 {
+    flex-direction: row;
+    gap: 20px;
+    text-align: left;
+  }
+  .part-3 .legal-pages,
+  .part-3 .imp-links {
+    gap: 15px;
+  }
+
+  .part-3 .legal-pages a,
+  .part-3 .imp-links a {
+    font-size: 11px;
+  }
+
+  .part-3 .legal-pages h3,
+  .part-3 .imp-links h3 {
+    font-size: 15px;
+  }
+
+  footer {
+    padding: 0.8rem 0.5rem;
+  }
+
+  footer a {
+    font-size: 11px;
+  }
+}
+
+/* Extra responsive adjustments for very small screens */
+@media screen and (max-width: 360px) {
+  .hero-content .left-content h1 {
+    font-size: 16px;
+  }
+
+  .subscribe-container input {
+    width: 180px;
+  }
+
+  .subscribe-container button {
+    width: 60px;
+  }
+}
+
+/*  res -info section */

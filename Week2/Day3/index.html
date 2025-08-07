@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/cart-model.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="images/r-1.png" type="image/x-icon" />
+    <!-- <link rel="stylesheet" href="css/animations.css" /> -->
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <img src="images/LOGO 1.png" alt="McDonald's Logo" />
+        </div>
+        <nav class="menu">
+          <a href="">Home</a>
+          <a href="">Special Offers</a>
+          <button href="">Restaurant</button>
+          <a href="">Track Order</a>
+        </nav>
+        <div class="cart">
+          <img src="images/shoppingVector.png" alt="Cart" />
+          Cart
+        </div>
+        <!-- Mobile menu toggle -->
+        <div class="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- hero section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="left-content">
+          <h6>I'm lovin' it!</h6>
+          <h1>McDonald's East London</h1>
+          <div class="order-delivery">
+            <div class="gbp">
+              <img src="images/gbp.png" alt="GBP" />
+              <p>Minimum Order: 12 GBP</p>
+            </div>
+            <div class="delivery">
+              <img src="images/Motocross.-deliverypng.png" alt="Delivery" />
+              <p>Delivery in 20-25 Minutes</p>
+            </div>
+          </div>
+        </div>
+        <div class="right-img">
+          <img class="rating" src="images/burger-rating.png" alt="Rating" />
+          <img class="burger" src="images/hero-burger.png" alt="Hero Burger" />
+        </div>
+      </div>
+      <!-- timing container -->
+      <div class="timing">
+        <div class="timing-container">
+          <img src="images/Clock.png" alt="Clock" />
+          <p>Open until 3:00 AM</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- offers-search section -->
+    <div class="menu-bar">
+      <div class="heading-search">
+        <h2>All Offers from McDonald's East London</h2>
+        <div class="search">
+          <span class="material-symbols-outlined">search</span>
+          <input type="text" placeholder="Search from Menu" />
+        </div>
+      </div>
+      <div class="offers">
+        <div class="offers-options">
+          <a class="offer_border" href="#" data-category="all">Offers</a>
+          <a href="#" data-category="burgers">Burgers</a>
+          <a href="#" data-category="fries">Fries</a>
+          <a href="#" data-category="snacks">Snacks</a>
+          <a href="#" data-category="salads">Salads</a>
+          <a href="#" data-category="drinks">Cold Drinks</a>
+          <a href="#" data-category="happy-meal">Happy Meal®</a>
+          <a href="#" data-category="desserts">Desserts</a>
+          <a href="#" data-category="hot-drinks">Hot drinks</a>
+          <a href="#" data-category="sauces">Sauces</a>
+          <a href="#" data-category="orbit">Orbit®</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Burgers -->
+    <div class="container-burgers" data-category="burgers">
+      <h1>Burgers</h1>
+      <div class="burgers">
+        <!-- Products will be dynamically loaded here -->
+      </div>
+    </div>
+
+    <!-- Fries -->
+    <div class="container-burgers" data-category="fries">
+      <h1 class="fires-heading">Fries</h1>
+      <div class="burgers">
+        <!-- Products will be dynamically loaded here -->
+      </div>
+    </div>
+
+    <!-- Drinks -->
+    <div class="container-burgers" data-category="drinks">
+      <h1 class="fires-heading">Cold Drinks</h1>
+      <div class="burgers">
+        <!-- Products will be dynamically loaded here -->
+      </div>
+    </div>
+
+    <!--  res info section  -->
+    <div id="info"></div>
+    <!-- Know more about us section  -->
+    <div id="knowmore"></div>
+
+    <!-- Customer review  -->
+    <div class="customer-review">
+      <div class="heading-area">
+        <div class="heading">Customer Reviews</div>
+        <div class="arrows">
+          <img src="images/arrow1.png" alt="Previous" />
+          <img src="images/arrow2.png" alt="Next" />
+        </div>
+      </div>
+      <div class="review-area">
+        <!-- Reviews will be dynamically loaded here -->
+      </div>
+      <div class="review-img">
+        <img src="images/burger-rating.png" alt="Restaurant food" />
+      </div>
+    </div>
+
+    <!-- similar Restaurants -->
+    <div class="similar-Restaurants">
+      <h1>Similar Restaurants</h1>
+      <div class="restaurants">
+        <!-- Similar restaurants will be dynamically loaded here -->
+      </div>
+    </div>
+
+    <!-- footer top section -->
+    <div class="footer-top-section">
+      <div class="part-1">
+        <img class="footer-log" src="images/LOGO 2.png" alt="Order UK Logo" />
+        <div class="play-stores">
+          <img src="images/google.png" alt="Google Play" />
+          <img src="images/appstore.jpg" alt="App Store" />
+        </div>
+        <p>Company # 490039-445, Registered with <br />House of companies.</p>
+      </div>
+      <div class="part-2">
+        <h3>Get Exclusive Deals in your Inbox</h3>
+        <div class="subscribe-container">
+          <input type="email" placeholder="youremail@gmail.com" />
+          <button>Subscribe</button>
+        </div>
+        <p>we wont spam, read our email policy</p>
+        <div class="icons">
+          <img src="images/Facebook.png" alt="Facebook" />
+          <img src="images/Instagram.png" alt="Instagram" />
+          <img src="images/TikTok.png" alt="TikTok" />
+          <img src="images/Snapchat.png" alt="Snapchat" />
+        </div>
+      </div>
+      <div class="part-3">
+        <div class="legal-pages">
+          <h3>Legal Pages</h3>
+          <a href="">Terms and conditions</a>
+          <a href="">Privacy</a>
+          <a href="">Cookies</a>
+          <a href="">Modern Slavery Statement</a>
+        </div>
+        <div class="imp-links">
+          <h3>Important Links</h3>
+          <a href="">Get help</a>
+          <a href="">Add your restaurant</a>
+          <a href="">Sign up to deliver</a>
+          <a href="">Create a business account</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <div class="foot-right">
+        <a href="">Order.uk Copyright 2025, All Rights Reserved</a>
+      </div>
+      <div class="foot-left">
+        <a href="">Privacy Policy</a>
+        <a href="">Terms</a>
+        <a href="">Pricing</a>
+        <a href="">Do not sell or share my personal information</a>
+      </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="data/restaurant-data.js"></script>
+    <script src="js/app.js"></script>
+    <!-- <script src="js/scroll-animations.js"></script> -->
+
+    <script>
+      // Load footer.html into the div with id="footer"
+      fetch("info.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("info").innerHTML = data;
+        });
+      // Load footer.html into the div with id="footer"
+      fetch("knowmore.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("knowmore").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>
