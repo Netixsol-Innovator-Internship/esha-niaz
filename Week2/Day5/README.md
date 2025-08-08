@@ -32,10 +32,8 @@ A simple yet interactive **Quiz Application** built using **HTML**, **CSS**, and
 ## 🛠 Tech Stack
 
 - **HTML** – Structure of the app.
-- **CSS** – Styling and layout.
+- **tailwind-css** – Styling and layout.
 - **JavaScript** – Functionality and interactivity.
-
-## 📂 Folder Structure
 
 ## 🌐 Live Demo
 
