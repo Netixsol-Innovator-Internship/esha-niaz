@@ -1,23 +1,17 @@
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('../swagger.json');
 
 const express = require('express');
-// create application to run express function 
 const app = express();
-// port => local host
-// const PORT = 3000;
 const PORT = process.env.PORT || 3000;
-const path = require('path');
-app.use(express.static(path.join(__dirname, 'node_modules', 'swagger-ui-dist')));
-
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 app.use(express.json());
 
 // In-memory tasks array
 let tasks = [
-  { id: 1, title: "Hy Eeshhh", completed: false },
-  {id:2, title:"Welcome to netixsol!", completed:false}
+  { id: 1, title: "Learn Express", completed: false }
 ];
 
 // GET /api/tasks - get all tasks
@@ -153,15 +147,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// app.listen(PORT, () => {
-//   console.log(`Server running on http://192.168.18.97:${PORT}`);
-// });
-// Redirect root URL '/' to Swagger docs
-app.get('/', (req, res) => {
-  res.redirect('/api-docs');
-});
-
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
-

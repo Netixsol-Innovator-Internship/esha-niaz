@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://192.168.18.97:3000",
+      "url": "https://week3-day1-task-backend-apis.vercel.app",
       "description": "Local server"
     }
   ],
@@ -23,8 +23,7 @@
                 "example": {
                   "success": true,
                   "data": [
-                    { "id": 1, "title": "Hy Eeshhh", "completed": false },
-                    {"id":2, "title":"Welcome to netixsol!", "completed":false}
+                    { "id": 1, "title": "Learn Express", "completed": false }
                   ],
                   "message": "Tasks retrieved successfully"
                 }
