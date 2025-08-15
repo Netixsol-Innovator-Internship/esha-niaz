@@ -19,10 +19,25 @@ const app = express()
 connectDB()
 
 // Middleware
+
+
 app.use(cors({
-  origin: "http://localhost:5173", // Your React app URL
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // Allow Postman/curl
+    if (
+      origin.includes("esha-week3-day3-task-frontend.vercel.app") || 
+      origin.includes("esha-week2-day2-task-backend.vercel.app") ||
+      origin.includes("vercel.app") // allow all Vercel preview deployments
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
-}))
+}));
+
+
 app.use(express.json({ limit: "10mb" }))
 app.use(express.urlencoded({ extended: true }))
 
