@@ -21,14 +21,35 @@ connectDB()
 // Middleware
 
 
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin) return callback(null, true); // Allow Postman/curl
+//     if (
+//       origin.includes("esha-week3-day3-task-frontend.vercel.app") || 
+//       origin.includes("esha-week2-day2-task-backend.vercel.app") ||
+//       origin.includes("vercel.app") // allow all Vercel preview deployments
+//     ) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true
+// }));
+
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // Allow Postman/curl
-    if (
-      origin.includes("esha-week3-day3-task-frontend.vercel.app") || 
-      origin.includes("esha-week2-day2-task-backend.vercel.app") ||
-      origin.includes("vercel.app") // allow all Vercel preview deployments
-    ) {
+    if (!origin) return callback(null, true); // Allow requests with no origin (curl, Postman, Swagger in same domain)
+
+    const allowed = [
+      "https://esha-week3-day3-task-frontend.vercel.app",
+      "https://esha-week2-day2-task-backend.vercel.app",
+      "http://localhost:5173",
+      "http://localhost:3000"
+    ];
+
+    // Allow if explicitly in list OR is any vercel.app subdomain
+    if (allowed.includes(origin) || /\.vercel\.app$/.test(origin)) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
@@ -36,6 +57,7 @@ app.use(cors({
   },
   credentials: true
 }));
+
 
 
 app.use(express.json({ limit: "10mb" }))
