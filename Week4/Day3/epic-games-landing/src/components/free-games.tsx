@@ -11,7 +11,7 @@ const freeGames = [
   {
     id: "2",
     title: "Assassin's Creed Black Flag",
-    image: "/ass-black.jpg",
+    image: "/Rectangle.jpg",
     availability: "Free Now - Jul 25",
   },
   {
@@ -49,7 +49,7 @@ export function FreeGames() {
               className="bg-[#2A2A2A] border-[#2A2A2A] overflow-hidden hover:bg-gray-750 cursor-pointer transition hover:scale-[1.03] rounded-lg"
             >
               <div className="relative">
-                <img src={game.image || "/placeholder.svg"} alt={game.title} className="w-full h-[315px] object-contain" />
+                <img src={game.image || "/placeholder.svg"} alt={game.title} className="w-full h-[315px] " />
               </div>
               <div className="p-3 sm:p-4 w-full min-h-[80px] flex flex-col justify-between">
                 <h3 className="text-white font-medium mb-2 truncate">{game.title}</h3>
