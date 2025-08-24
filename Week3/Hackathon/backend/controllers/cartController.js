@@ -10,53 +10,54 @@ export const addToCart = async (req, res) => {
     const { id } = req.user;
     const { prod_id, variant, quantity } = req.body;
 
-    // Check if product with that variant exists
-    const existence = await Product.findOne({
-      _id: prod_id,
-      "variants.weight": variant,
-    });
-
-    if (!existence) {
+    // 1. Find the product
+    const product = await Product.findById(prod_id);
+    if (!product) {
       return res.status(400).json({
         success: false,
-        data: null,
+        message: "Product does not exist",
+      });
+    }
+
+    // 2. Validate variant exists
+    const selectedVariant = product.variants.find((v) => v.weight === variant);
+    if (!selectedVariant) {
+      return res.status(400).json({
+        success: false,
         message: "Product with this variant does not exist",
       });
     }
 
-    // Find or create user cart
-    let userCart = await Cart.findOne({ user: id });
-    if (!userCart) {
-      const cart = await Cart.create({ user: id, products: [] });
-      await User.findByIdAndUpdate(id, { cart: cart._id });
-      userCart = cart;
+    // 3. Ensure stock is enough (use product.stock, not variant.stock)
+    if (product.stock < quantity) {
+      return res.status(400).json({
+        success: false,
+        message: "Requested quantity exceeds available stock",
+      });
     }
 
-    // Check if item already exists in cart
+    // 4. Get/create user cart
+    let userCart = await Cart.findOne({ user: id });
+    if (!userCart) {
+      userCart = await Cart.create({ user: id, products: [] });
+      await User.findByIdAndUpdate(id, { cart: userCart._id });
+    }
+
+    // 5. Check if item already exists in cart
     const itemIndex = userCart.products.findIndex(
       (p) => p.product.toString() === prod_id && p.variant === variant
     );
 
     if (itemIndex > -1) {
-      // Existing item: update quantity
       const newQuantity = userCart.products[itemIndex].quantity + quantity;
-      if (existence.stock < newQuantity) {
+      if (product.stock < newQuantity) {
         return res.status(400).json({
           success: false,
-          data: null,
           message: "Requested quantity exceeds available stock",
         });
       }
       userCart.products[itemIndex].quantity = newQuantity;
     } else {
-      // New item: push to cart
-      if (existence.stock < quantity) {
-        return res.status(400).json({
-          success: false,
-          data: null,
-          message: "Requested quantity exceeds available stock",
-        });
-      }
       userCart.products.push({ product: prod_id, variant, quantity });
     }
 
@@ -68,12 +69,14 @@ export const addToCart = async (req, res) => {
       message: "Item added to cart successfully",
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message,
     });
   }
 };
+
+
 
 
 // Increase Quantity of Product
@@ -282,15 +285,26 @@ export const getUserCartProducts = async (req, res) => {
       });
     }
 
-    // console.log(userCart.products[0].product);
-    // console.log(userCart)
     const cartItems = userCart.products.map((item) => {
+      if (!item.product) {
+        return {
+          productId: null,
+          cartItemId: item._id,
+          name: "Product removed",
+          image: null,
+          variant: item.variant,
+          quantity: item.quantity,
+          price: 0,
+          total: 0,
+        };
+      }
+
       const variantObj = item.product.variants.find(
         (v) => v.weight === item.variant
       );
 
       const price = variantObj ? variantObj.price : 0;
-     
+
       return {
         productId: item.product._id,
         cartItemId: item._id,
@@ -298,7 +312,7 @@ export const getUserCartProducts = async (req, res) => {
         image: item.product.images[0],
         variant: item.variant,
         quantity: item.quantity,
-        price: price,
+        price,
         total: price * item.quantity,
       };
     });
@@ -306,7 +320,7 @@ export const getUserCartProducts = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: cartItems,
-      message: success.CART_RETRIEVED,
+      message: "Cart retrieved successfully",
     });
   } catch (error) {
     return res.status(500).json({
@@ -315,3 +329,4 @@ export const getUserCartProducts = async (req, res) => {
     });
   }
 };
+

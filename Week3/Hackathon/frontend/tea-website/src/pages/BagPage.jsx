@@ -1,7 +1,7 @@
 import MainSection from "../components/cart/MainSection"
 import TopBar from "../components/cart/TopBar"
 import Container from "../components/shared/common/Container"
-import RelatedProducts from "../components/shared/common/RelatedProducts"
+// import RelatedProducts from "../components/shared/common/RelatedProducts"
 
 const BagPage = () => {
     const local = localStorage.getItem('')
@@ -10,7 +10,7 @@ const BagPage = () => {
             <Container>
                 <TopBar/>
                 <MainSection/>
-                <RelatedProducts title="You May Also Like" />
+                {/* <RelatedProducts title="You May Also Like" /> */}
             </Container>
         </div>
     )

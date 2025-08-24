@@ -1,14 +1,15 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../../../hooks/useAuth";
+import { Navigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { isAuthenticated } from "../../../redux/slices/auth/authSlice"
 
 const PublicRoute = ({ children }) => {
-    const { isAuthenticated } = useAuth();
+    const authenticated = useSelector(isAuthenticated)
 
-    if (isAuthenticated) {
-        return <Navigate to="/" replace />;
+    if (authenticated) {
+        return <Navigate to="/" replace />
     }
 
-    return children;
-};
+    return children
+}
 
-export default PublicRoute;
+export default PublicRoute

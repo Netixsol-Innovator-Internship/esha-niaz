@@ -1,8 +1,11 @@
+// backend/controllers/authController.js
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 import User from "../models/User.js";
 import { success, errors } from "../utils/responses.js";
-import Cart from "../models/Cart.js";
+
+dotenv.config();
 
 // Helper to create JWT
 const generateToken = (id) => {
@@ -15,7 +18,7 @@ const generateToken = (id) => {
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    console.log(name,email,password)
+
     // Check if user exists
     const userExists = await User.findOne({ email });
     if (userExists) {
@@ -28,17 +31,21 @@ export const registerUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
+    // Determine role
+    let role = "user";
+    if (email === process.env.SUPER_ADMIN_EMAIL) {
+      role = "superAdmin";
+    }
+
     // Create user
     const user = await User.create({
       name,
       email,
       password: hashedPassword,
+      role,
     });
 
     if (user) {
-   
-
-      //   sending response
       res.status(201).json({
         success: true,
         message: success.USER_REGISTERED,
@@ -46,7 +53,8 @@ export const registerUser = async (req, res) => {
           _id: user.id,
           name: user.name,
           email: user.email,
-          cart:user.cart,
+          role: user.role,
+          cart: user.cart,
           token: generateToken(user.id),
         },
       });
@@ -65,22 +73,44 @@ export const loginUser = async (req, res) => {
 
     const user = await User.findOne({ email });
 
-    if (user && (await bcrypt.compare(password, user.password))) {
-      res.json({
-        success: true,
-        message: success.USER_LOGGED_IN,
-        data: {
-          _id: user.id,
-          name: user.name,
-          email: user.email,
-          token: generateToken(user.id),
-        },
-      });
-    } else {
-      res
+    if (!user) {
+      return res
         .status(401)
         .json({ success: false, message: errors.INVALID_CREDENTIALS });
     }
+
+    // Check if blocked
+    if (user.isBlocked) {
+      return res
+        .status(403)
+        .json({ success: false, message: "Your account is blocked. Contact support." });
+    }
+
+    // Validate password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res
+        .status(401)
+        .json({ success: false, message: errors.INVALID_CREDENTIALS });
+    }
+
+    // If this is the configured superAdmin, enforce role
+    if (email === process.env.SUPER_ADMIN_EMAIL && user.role !== "superAdmin") {
+      user.role = "superAdmin";
+      await user.save();
+    }
+
+    res.json({
+      success: true,
+      message: success.USER_LOGGED_IN,
+      data: {
+        _id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        token: generateToken(user.id),
+      },
+    });
   } catch (error) {
     res.status(500).json({ success: false, message: errors.SERVER_ERROR });
   }
@@ -104,12 +134,12 @@ export const getProfile = async (req, res) => {
   }
 };
 
-// delete /api/auth/profile
+// DELETE /api/auth/profile
 export const deleteAccount = async (req, res) => {
   try {
     await User.findByIdAndDelete(req.user.id);
     res.json({ success: true, message: success.ACCOUNT_DELETED });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.SERVER_ERROR });
+    res.status(500).json({ success: false, message: errors.SERVER_ERROR });
   }
 };

@@ -5,7 +5,7 @@ import logo from "../../../assets/header/logo.svg";
 import { Link } from "react-router-dom";
 
 
-export const MobileMenu = ({ onClose }) => {
+export const MobileMenu = ({ onClose, setIsCartOpen, token, user, onLogout }) => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -14,7 +14,12 @@ export const MobileMenu = ({ onClose }) => {
 
     const handleClose = () => {
         setIsVisible(false);
-        setTimeout(() => onClose(), 300); // match transition duration
+        setTimeout(() => onClose(), 300);
+    };
+
+    const handleBagClick = () => {
+        onClose();
+        setTimeout(() => setIsCartOpen(true), 300);
     };
 
     return (
@@ -53,29 +58,75 @@ export const MobileMenu = ({ onClose }) => {
                         </div>
 
                         {/* Profile + Bag */}
-                        <div className="mt-4 space-y-4">
-                            <div className="flex items-center gap-2 text-sm">
-                                <img src={Icons.user.src} alt="User" className="h-6 w-6" />
-                                <p className="text-[11px] font-medium text-[#282828]">
-                                    USER PROFILE<br />
-                                    <span className="text-xs text-[#A0A0A0] font-normal">
-                                        We know you as a guest user
-                                    </span>
-                                </p>
-                            </div>
-                            <div
-                                className="flex items-center gap-2 text-sm cursor-pointer"
-                                onClick={handleClose}
-                            >
-                                <img src={Icons.cart.src} alt="Bag" className="h-6 w-6" />
-                                <p className="text-[11px] font-medium text-[#282828]">
-                                    YOUR BAG<br />
-                                    <span className="text-xs text-[#A0A0A0] font-normal">
-                                        <span className="text-[#C3B212]">(3)</span> items have been added
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
+{/* Profile + Bag */}
+<div className="mt-4 space-y-4">
+  {!token ? (
+    <Link
+      to={Icons.user.path}
+      onClick={handleClose}
+      className="flex items-center gap-2 text-sm"
+    >
+      <img src={Icons.user.src} alt="User" className="h-6 w-6" />
+      <p className="text-[11px] font-medium text-[#282828]">
+        USER PROFILE<br />
+        <span className="text-xs text-[#A0A0A0] font-normal">
+          We know you as a guest user
+        </span>
+      </p>
+    </Link>
+  ) : (
+    <>
+      {/* Dashboard (only for admin / superAdmin) */}
+      {["admin", "superAdmin"].includes(user?.role) && (
+        <Link
+          to="/dashboard"
+          onClick={handleClose}
+          className="flex items-center gap-2 text-sm"
+        >
+          <img src={Icons.user.src} alt="Dashboard" className="h-6 w-6" />
+          <p className="text-[11px] font-medium text-[#282828]">
+            DASHBOARD<br />
+            <span className="text-xs text-[#A0A0A0] font-normal">
+              Manage your account
+            </span>
+          </p>
+        </Link>
+      )}
+
+      {/* Logout */}
+      <button
+        onClick={() => {
+          onLogout();
+          handleClose();
+        }}
+        className="flex items-center gap-2 text-sm w-full text-left"
+      >
+        <img src={Icons.user.src} alt="Logout" className="h-6 w-6" />
+        <p className="text-[11px] font-medium text-[#282828]">
+          LOGOUT<br />
+          <span className="text-xs text-[#A0A0A0] font-normal">
+            Sign out from your account
+          </span>
+        </p>
+      </button>
+    </>
+  )}
+
+  {/* Bag */}
+  <div
+    className="flex items-center gap-2 text-sm cursor-pointer"
+    onClick={handleBagClick}
+  >
+    <img src={Icons.cart.src} alt="Bag" className="h-6 w-6" />
+    <p className="text-[11px] font-medium text-[#282828]">
+      YOUR BAG<br />
+      <span className="text-xs text-[#A0A0A0] font-normal">
+        <span className="text-[#C3B212]"></span>see your cart
+      </span>
+    </p>
+  </div>
+</div>
+
 
                         <hr className="my-7" />
                         {/* Nav Links */}

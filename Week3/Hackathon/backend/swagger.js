@@ -1,24 +1,32 @@
-import swaggerAutogen from 'swagger-autogen';
+// swagger.js
+import swaggerAutogen from "swagger-autogen";
 
 const doc = {
-    info: {
-        title: 'Ecommerce API',
-        description: 'In-memory CRUD API for Ecommerce',
+  info: {
+    title: "Ecommerce API",
+    description: "REST API for Ecommerce app with Auth, Products, Cart, and Admin features",
+    version: "1.0.0",
+  },
+  host: "localhost:3000", // change when deploying
+  basePath: "/",
+  schemes: ["http"], // use "https" in production
+  consumes: ["application/json"],
+  produces: ["application/json"],
+  securityDefinitions: {
+    BearerAuth: {
+      type: "apiKey",
+      name: "Authorization",
+      in: "header",
+      description: "Enter JWT token like: Bearer <token>",
     },
-    host: 'localhost:3000',
-    schemes: ['http'],
-    securityDefinitions: {
-        BearerAuth: {
-            type: 'apiKey',
-            name: 'Authorization',
-            in: 'header',
-            description: 'Enter JWT token like: Bearer <token>',
-        },
-    },
-    security: [{ BearerAuth: [] }],
+  },
+  security: [{ BearerAuth: [] }],
 };
 
-const outputFile = './swagger-output.json';
-const endpointsFiles = ['./server.js'];
+// Generated file
+const outputFile = "./swagger-output.json";
 
-swaggerAutogen(outputFile, endpointsFiles, doc);
+// All your route entry points
+const endpointsFiles = ["./server.js"];
+
+swaggerAutogen()(outputFile, endpointsFiles, doc);

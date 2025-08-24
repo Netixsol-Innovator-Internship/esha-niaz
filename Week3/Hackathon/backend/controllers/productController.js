@@ -1,33 +1,109 @@
-// Create Product
-
 import Product from "../models/Product.js";
 import { errors, success } from "../utils/responses.js";
-
 import fs from "fs";
+import slugify from "slugify";  // 👈 install this if not already
+import cloudinary from "../config/cloudinary.js";
+import { log } from "console";
+
+// export const createProduct = async (req, res) => {
+//   try {
+//     let data = req.body;
+
+//     // Upload all images to Cloudinary
+//     if (req.files && req.files.length > 0) {
+//       const uploadPromises = req.files.map((file) => {
+//         return new Promise((resolve, reject) => {
+//           const stream = cloudinary.uploader.upload_stream(
+//             { folder: "products" },
+//             (error, result) => {
+//               if (error) reject(error);
+//               else resolve(result.secure_url); // store only URL
+//             }
+//           );
+//           stream.end(file.buffer); // 👈 important
+//         });
+//       });
+
+//       const imageUrls = await Promise.all(uploadPromises);
+//       data.images = imageUrls;
+//     }
+
+//     // Auto slug
+//     if (!data.slug && data.name) {
+//       data.slug = slugify(data.name, { lower: true, strict: true });
+//     }
+
+//     // Duplicate check
+//     const existingProduct = await Product.findOne({
+//       $or: [{ name: data.name }, { slug: data.slug }],
+//     });
+//     if (existingProduct) {
+//       return res.status(400).json({
+//         success: false,
+//         message:
+//           existingProduct.name === data.name
+//             ? "Product name already exists"
+//             : "Product slug already exists",
+//       });
+//     }
+
+//     // Save product
+//     const product = await Product.create(data);
+//     return res.status(201).json({
+//       success: true,
+//       data: product,
+//       message: "Product created successfully",
+//     });
+//   } catch (error) {
+//     console.error("Error creating product:", error);
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// };
 
 export const createProduct = async (req, res) => {
   try {
     let data = req.body;
+console.log("body data", data);
+console.log("file", req.file)
 
-    // Attach images paths
-    if (req.files) {
-      data.images = req.files.map((file) => file.path);
+    // Upload single image to Cloudinary
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: "products" },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result); // store only URL
+          }
+        );
+        stream.end(req.file.buffer); // 👈 important for multer memory storage
+      });
+
+      console.log("image uploaded result", result)
+
+      data.images = result.secure_url; // ✅ store as single field (not array)
     }
 
-    let { name, slug } = data;
+    // Auto slug
+    if (!data.slug && data.name) {
+      data.slug = slugify(data.name, { lower: true, strict: true });
+    }
+
+    // Duplicate check
     const existingProduct = await Product.findOne({
-      $or: [{ name }, { slug }],
+      $or: [{ name: data.name }, { slug: data.slug }],
     });
     if (existingProduct) {
       return res.status(400).json({
         success: false,
         message:
-          existingProduct.name === name
+          existingProduct.name === data.name
             ? "Product name already exists"
             : "Product slug already exists",
       });
     }
 
+    // Save product
     const product = await Product.create(data);
     return res.status(201).json({
       success: true,
@@ -35,9 +111,12 @@ export const createProduct = async (req, res) => {
       message: "Product created successfully",
     });
   } catch (error) {
+    console.error("Error creating product:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+
 // Fetching all Products
 
 export const getAllProducts = async (req, res) => {
