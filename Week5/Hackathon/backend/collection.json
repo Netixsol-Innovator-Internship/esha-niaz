@@ -1,0 +1,64 @@
+{
+  "info": {
+    "name": "Cars API",
+    "description": "Collection for creating cars with images",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Car",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "make",
+              "value": "Toyota",
+              "type": "text"
+            },
+            {
+              "key": "model",
+              "value": "Corolla",
+              "type": "text"
+            },
+            {
+              "key": "vin",
+              "value": "ABC123XYZ",
+              "type": "text"
+            },
+            {
+              "key": "year",
+              "value": "2022",
+              "type": "text"
+            },
+            {
+              "key": "maxBid",
+              "value": "20000",
+              "type": "text"
+            },
+            {
+              "key": "photos",
+              "type": "file",
+              "src": []
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:4000/cars",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["cars"]
+        }
+      }
+    }
+  ]
+}
