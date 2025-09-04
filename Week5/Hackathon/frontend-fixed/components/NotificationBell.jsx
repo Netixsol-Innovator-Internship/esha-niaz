@@ -107,7 +107,7 @@ export default function NotificationBell() {
   const [mark] = useMarkNotificationReadMutation();
 
   const unreadCount = notifications.filter(n => !n.read).length;
-
+  
   const handleMarkRead = async (id) => {
     try {
       await mark(id).unwrap();
