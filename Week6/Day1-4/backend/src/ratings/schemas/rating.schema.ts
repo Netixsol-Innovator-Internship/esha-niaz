@@ -6,7 +6,7 @@ export type RatingDocument = HydratedDocument<Rating>;
 @Schema({ timestamps: true })
 export class Rating {
   @Prop({ type: Types.ObjectId, ref: 'User', required: true, index: true })
-  userId: any;
+  userId: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'Product', required: true, index: true })
   productId: any;

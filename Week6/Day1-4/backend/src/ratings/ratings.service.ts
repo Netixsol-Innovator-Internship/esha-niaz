@@ -23,9 +23,9 @@ export class RatingsService {
     return { message: 'Rating submitted.' };
   }
 
-  async listForProduct(productId: string) {
-    return this.model.find({ productId }).lean();
-  }
+async listForProduct(productId: string) {
+  return this.model.find({ productId: new Types.ObjectId(productId) }).populate('userId', 'name').lean();
+}
 
   async updateProductAverage(productId: string) {
     const agg = await this.model.aggregate([

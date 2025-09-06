@@ -6,10 +6,9 @@ import { CreateRatingDto } from './dto/create-rating.dto';
 import { GetUser } from '../common/decorators/user.decorator';
 
 @Controller('ratings')
-@UseGuards(JwtAuthGuard, VerifiedGuard)
 export class RatingsController {
   constructor(private ratings: RatingsService) {}
-
+  @UseGuards(JwtAuthGuard, VerifiedGuard)
   @Post()
   create(@GetUser() user: any, @Body() dto: CreateRatingDto) {
     return this.ratings.create(user.id, dto.productId, dto.stars, dto.comment);

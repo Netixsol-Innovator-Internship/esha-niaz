@@ -94,7 +94,9 @@ async setSale(
   @Post(':id/upload-image')
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.Admin, Role.SuperAdmin)
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', {
+    limits: { fileSize: 20 * 1024 * 1024 }, // 20 MB per file
+}))
   async upload(@Param('id') id: string, @Body() body: { color: string }, @UploadedFile() file: Express.Multer.File) {
     if (!file) throw new BadRequestException('File is required.');
     const uploaded = await new Promise<{ secure_url: string }>((resolve, reject) => {
