@@ -159,7 +159,7 @@ export default function ProductsPage() {
                 {product.sale && product.sale.active && (
                   <>
                     <p className="text-red-600 font-semibold">
-                      Sale Price: ${product.sale.salePrice} ({product.sale.discountPercent}% off)
+                      Sale Price: ${product.sale.salePrice.toFixed(2)} ({product.sale.discountPercent}% off)
                     </p>
                     <p className="text-gray-500 text-sm">
                       Sale: {new Date(product.sale.startTime).toLocaleString()} - {new Date(product.sale.endTime).toLocaleString()}

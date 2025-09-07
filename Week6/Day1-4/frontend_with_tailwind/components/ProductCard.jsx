@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
+
 export default function ProductCard({ product }) {
   const renderStars = (rating) => {
     const stars = [];
@@ -47,7 +48,7 @@ export default function ProductCard({ product }) {
 
           {/* Price */}
           <div className="flex items-center gap-2 mt-2">
-            <span className="text-xl font-bold">${product.effectivePrice}</span>
+            <span className="text-xl font-bold">${product.effectivePrice.toFixed(2)}</span>
             {product.sale?.active && (
               <>
                 <span className="line-through text-gray-400">${product.price}</span>

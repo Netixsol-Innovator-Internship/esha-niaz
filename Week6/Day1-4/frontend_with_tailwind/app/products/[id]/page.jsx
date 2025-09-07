@@ -31,9 +31,13 @@ export default function ProductDetailPage() {
   if (!product) return <p>Product not found</p>;
 
   // Default to first variant color if none selected
-  const activeVariant =
-    product.variants.find((v) => v.color === selectedColor) ||
-    product.variants[0];
+  // const activeVariant =
+  //   product.variants.find((v) => v.color === selectedColor) ||
+  //   product.variants[0];
+ const activeVariant =
+  product.variants?.find((v) => v.color === selectedColor) ||
+  product.variants?.[0] ||
+  null;
 
   const renderStars = (rating, setRating) => {
     const starsArr = [];
@@ -120,36 +124,45 @@ const handleSubmitReview = async (e) => {
     <div className="container-max py-8">
             <div className="grid md:grid-cols-2 gap-8">
         {/* Images */}
-        <div>
-          <Swiper spaceBetween={10} slidesPerView={1}>
-            {activeVariant.images.map((img, idx) => (
-              <SwiperSlide key={idx}>
-                <img
-                  src={img}
-                  alt={product.name}
-                  className="w-full h-96 object-cover rounded-xl"
+{/* Images */}
+<div>
+  {activeVariant?.images && activeVariant.images.length > 0 ? (
+    <Swiper spaceBetween={10} slidesPerView={1}>
+      {activeVariant.images.map((img, idx) => (
+        <SwiperSlide key={idx}>
+          <img
+            src={img}
+            alt={product.name}
+            className="w-full h-96 object-cover rounded-xl"
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  ) : (
+    <div className="w-full h-96 flex items-center justify-center bg-gray-100 rounded-xl">
+      <span className="text-gray-500">No images uploaded</span>
+    </div>
+  )}
 
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+  {/* Color selector */}
+  {product.variants?.length > 0 && (
+    <div className="flex gap-2 mt-4">
+      {product.variants.map((variant, idx) => (
+        <button
+          key={idx}
+          className={`w-8 h-8 rounded-full border-2 ${
+            selectedColor === variant.color
+              ? "border-black"
+              : "border-gray-300"
+          }`}
+          style={{ backgroundColor: variant.color }}
+          onClick={() => setSelectedColor(variant.color)}
+        />
+      ))}
+    </div>
+  )}
+</div>
 
-          {/* Color selector */}
-          <div className="flex gap-2 mt-4">
-            {product.variants.map((variant, idx) => (
-              <button
-                key={idx}
-                className={`w-8 h-8 rounded-full border-2 ${
-                  selectedColor === variant.color
-                    ? "border-black"
-                    : "border-gray-300"
-                }`}
-                style={{ backgroundColor: variant.color }}
-                onClick={() => setSelectedColor(variant.color)}
-              />
-            ))}
-          </div>
-        </div>
 
         {/* Product Info */}
         <div>
@@ -168,7 +181,7 @@ const handleSubmitReview = async (e) => {
           </div>
 
           <div className="flex items-center gap-3 mt-4">
-            <span className="text-2xl font-bold">${product.effectivePrice}</span>
+            <span className="text-2xl font-bold">${product.effectivePrice.toFixed(2)}</span>
             {product.sale?.active && (
               <>
                 <span className="line-through text-gray-400">${product.price}</span>
