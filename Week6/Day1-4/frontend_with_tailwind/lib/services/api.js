@@ -100,7 +100,9 @@ export const api = createApi({
         method: "POST",
         body: { productId, stars, comment },
       }),
-      invalidatesTags: (result, error, { productId }) => [{ type: "Ratings", id: productId }],
+      invalidatesTags: (result, error, { productId }) => [{ type: "Ratings", id: productId },
+        { type: "Products", id: productId }, // must match getProductById
+      ],
     }),
 
 

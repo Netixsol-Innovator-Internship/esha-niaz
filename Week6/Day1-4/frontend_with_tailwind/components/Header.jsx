@@ -7,12 +7,14 @@ import { useState } from 'react';
 import { selectAuth, logout } from '../lib/slices/authSlice';
 import CartPopup from './CartPopup'; // ✅ make sure the path is correct
 import NotificationBell from './NotificationBell'; // ✅ make sure the path is correct
+import { ChevronDown } from "lucide-react";
 
 export default function Header() {
   const { token, me } = useSelector(selectAuth);
   const dispatch = useDispatch();
   const router = useRouter();
   const [cartOpen, setCartOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleCartClick = () => {
     if (!token) {
@@ -39,8 +41,35 @@ export default function Header() {
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <Link href="/" className="hover:text-gray-600">Shop</Link>
-          <Link href="/" className="hover:text-gray-600">On Sale</Link>
-          <Link href="/" className="hover:text-gray-600">New Arrivals</Link>
+          <Link href="/onSale" className="hover:text-gray-600">On Sale</Link>
+           {/* Categories Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setOpen((prev) => !prev)}
+              className="flex items-center gap-1 hover:text-blue-600"
+            >
+              Categories <ChevronDown size={16} />
+            </button>
+
+            {open && (
+              <div className="absolute mt-2 bg-white border rounded-lg shadow-lg w-40">
+                <Link
+                  href="/productsCat/male"
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  onClick={() => setOpen(false)}
+                >
+                  Male
+                </Link>
+                <Link
+                  href="/productsCat/female"
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  onClick={() => setOpen(false)}
+                >
+                  Female
+                </Link>
+              </div>
+            )}
+          </div>
           <Link href="/" className="hover:text-gray-600">Brands</Link>
 
           {/* 👤 Show My Profile if logged in */}

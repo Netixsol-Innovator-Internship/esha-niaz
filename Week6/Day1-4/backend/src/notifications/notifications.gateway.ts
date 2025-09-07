@@ -48,4 +48,10 @@ export class NotificationsGateway implements OnGatewayConnection, OnGatewayDisco
   notifyProductSoldOut(product: any) {
     this.server.to('admins').emit('product.soldout', { product });
   }
+
+
+  notifyNewReview(productId: string, review: any, averageRating: number) {
+  // Sabko jo us product ka page dekh rahe hain (room join karwayenge frontend se)
+  this.server.to(`product:${productId}`).emit('review.new', { review, averageRating });
+}
 }
